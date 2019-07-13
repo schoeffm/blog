@@ -1,0 +1,4 @@
+baseURL = "https://schoeffm.github.io/"
+languageCode = "en-us"
+title = "Personal PasteBin"
+theme = 'solar-theme-hugo'
