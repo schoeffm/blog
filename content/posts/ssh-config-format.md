@@ -1,7 +1,7 @@
 +++
 title = "SSH Config Format"
-date = 2019-07-11T15:35:15+02:00
-publishDate = 2019-07-11
+date = 2019-06-24T15:35:15+02:00
+publishDate = 2019-06-24
 draft = false
 tags = ["ssh", "devops", "cli", "configuration"]
 +++
