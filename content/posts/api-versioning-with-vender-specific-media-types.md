@@ -2,7 +2,7 @@
 title = "API versioning using vender specific media types in JAX-RS"
 date = 2019-06-10T10:40:12+02:00
 publishDate = 2019-06-10
-tags = ["jee", "java", "jax-rs", "rest"]
+tags = ["jax-rs", "jee", "jakartaee", "microprofile", "rest"]
 +++
 
 Content Negotiation in JAX-RS allows you to leverage the information in the client requests `Accept` header to map that request to a specific handler-method within your application. In combination with vendor-specific media types this approach can be used for [versioning of an API][idea].
