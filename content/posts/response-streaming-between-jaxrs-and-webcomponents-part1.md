@@ -49,7 +49,7 @@ you can see that the overall load-time didn't change. __But the _time-to-first-b
 
 In both these examples the transmission was chunked - but only the first one leveraged the chunks to provide a better [perceived performance][perceived-performance].
 
-In the [2nd part]{{< relref "response-streaming-between-jaxrs-and-webcomponents-part2.md" >}} of this post I'll show a (simple) web-component which uses the [fetch-API][fetch] to load the streamed content - the complete code for these examples can be found in [this repository][repo].
+In the [2nd part]({{< relref "response-streaming-between-jaxrs-and-webcomponents-part2.md" >}}) of this post I'll show a (simple) web-component which uses the [fetch-API][fetch] to load the streamed content - the complete code for these examples can be found in [this repository][repo].
 
 
 [chunked-transfere]:https://en.wikipedia.org/wiki/Chunked_transfer_encoding
