@@ -1,6 +1,6 @@
 +++
 title =  "Response streaming between JAR-RS and Web-Components (Part 2)"
-date = 2019-07-27T11:18:59+02:00
+date = 2019-07-28T12:18:59+02:00
 tags = ["web-components", "fetch", "chunk", "streaming"]
 +++
 
