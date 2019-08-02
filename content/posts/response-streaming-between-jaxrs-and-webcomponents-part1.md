@@ -1,5 +1,5 @@
 +++
-title =  "Response streaming between JAR-RS and Web-Components (Part 1)"
+title =  "Response streaming between JAX-RS and Web-Components (Part 1)"
 date = 2019-07-27T11:18:59+02:00
 publishDate = 2019-07-25
 tags = ["jax-rs", "jee", "jakartaee", "microprofile", "streaming"]
