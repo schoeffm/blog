@@ -216,3 +216,4 @@ After that we can check the props of the embedded component if they received our
 [karma]:http://karma-runner.github.io/latest/index.html
 [mocha]:https://mochajs.org/
 [chai]:https://www.chaijs.com/api/
+[repo]:https://github.com/schoeffm/testing-web-components
