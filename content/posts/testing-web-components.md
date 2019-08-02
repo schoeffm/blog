@@ -5,7 +5,7 @@ tags = ["web-components", "testing"]
 +++
 
 Testing web-components in isolation can be a challanging task. The (_current_) usual suspects in this area still [lack support for the standard](https://github.com/jsdom/jsdom/issues/1030) and thus cannot be used (at least at the time of this writing). Also, the web is swamped by posts about frameworks and thus finding good example projects or tutorials is also challanging.<br/>
-Finally, we found, at least for our project, a good solution which does the job and whose setup I'd like to write down/preserve.
+Finally, we found, at least for our project, a good solution which does the job and whose setup I'd like to write down/preserve (find the [corrsponding code in this repo][repo]).
 <!--more-->
 So after a few flops we stumbled upon [the open-wc project][openwc] and their [testing modules][openwc-testing]. Since we had our project already setup we were just interested in the testing stuff - thus we tried to integrate only those dependencies (and skipped the scaffolding-, webpack-, transpiling-stuff).<br/>
 
@@ -207,6 +207,8 @@ describe('Parent-Component', () => {
 
 As before, using the `fixture`-method from [openwc][openwc-testing] we render our `ParentComponent` - when that happens the component issues the network call and in order to wait for the result to arrive we have to make use of the `aTimeout` helper method. Since this has nothing to do with rendering- or the component-lifecycle itself there is no elegant way to wait for the network roundtrip as to just pause a couple of milliseconds.<br/>
 After that we can check the props of the embedded component if they received our remote data and thus if the plumbing done by `ParentComponent` worked.
+
+As always, you can find the complete code in [this repository][repo].
 
 
 [rollup]:http://rollupjs.org/
