@@ -1,6 +1,7 @@
 +++
 title = "Linux Permission Management"
 date = 2019-08-06T08:59:37+02:00
+publishDate = 2019-08-06
 tags = ["linux", "permissions", "cheatsheet", "devops" ]
 +++
 
@@ -17,16 +18,16 @@ This is also the order in which linux checks the permissions.
 
 {{< highlight shell >}}
 -rwxrw-r-- 1 user1 shared       0 Aug  6 07:16 user1File
- └┬┘└┬┘└┬┘
-  │  │  │
-  │  │  └─> others permissions: all other users can only Read 
-  │  │                          this file
-  │  │
-  │  └────> group-permissions: members of the 'shared' group can 
-  │                            Read and Write to this file
-  │
-  └───────> user-permissions: 'user1' (the owner) can Read + 
-                              Write + eXecute this file
+#└┬┘└┬┘└┬┘
+# │  │  │
+# │  │  └─> others permissions: all other users can only Read 
+# │  │                          this file
+# │  │
+# │  └────> group-permissions: members of the 'shared' group can 
+# │                            Read and Write to this file
+# │
+# └───────> user-permissions: 'user1' (the owner) can Read + 
+#                             Write + eXecute this file
 {{< /highlight >}}
 
 Commands to manage permissions:
@@ -87,12 +88,18 @@ user1:~$ touch /data/shared/user1File && exit
 root:~# ls -l /data/shared
 total 0
 -rw-rw-r-- 1 user1 user1 0 Aug  6 07:16 user1File
+#            └─┬─┘ └─┬─┘
+#              │     └─> primary group of the user
+#              │         who created that file
+#              └───────> creator of this file
 
 # let's set the group-id of the directory and notice the change
 # in the groups execution-right
 root:~# chmod g+s /data/shared
 root:~# ls -ld /data/shared/
 drwxrws--- 2 root shared 4096 Aug  6 07:16 /data/shared/
+#     │
+#     └─> set-group id: inherits its group
 
 # now, files created will belong to the shared group => every
 # group-member can interact with those files
@@ -102,6 +109,10 @@ root:~# ls -l /data/shared
 total 0
 -rw-rw-r-- 1 user1 user1  0 Aug  6 07:16 user1File
 -rw-rw-r-- 1 user1 shared 0 Aug  6 07:22 user2File
+#                  └─┬──┘
+#                    └─> now this file belongs to group 'shared' 
+#                        and thus can be changed by any member 
+#                        of that group
 {{< /highlight >}}
 
 #### Set sticky-bit (_on directory_)
@@ -122,6 +133,8 @@ total 0
 root:~# chmod +t /data/shared
 root:~# ls -ld /data/shared
 drwxrws--T 2 root shared 4096 Aug  6 07:22 /data/shared/
+#        │
+#        └─> directory as sticky bit set
 
 # now, user2 cannot delete files from user1 (only write to 'em)
 root:~# su - user2
