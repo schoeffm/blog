@@ -4,7 +4,7 @@ date = 2019-08-02T08:14:21+02:00
 tags = ["web-components", "testing"]
 +++
 
-Testing web-components in isolation can be a challanging task. The (_current_) usual suspects in this area still [lack support for the standard](https://github.com/jsdom/jsdom/issues/1030) and thus cannot be used (at least at the time of this writing). Also, the web is swamped by posts about frameworks and thus finding good example projects or tutorials is also challanging.<br/>
+Testing web-components in isolation can be a challenging task. The (_current_) usual suspects in this area still [lack support for the standard](https://github.com/jsdom/jsdom/issues/1030) and thus cannot be used (at least at the time of this writing). Also, the web is swamped by posts about frameworks and thus finding good example projects or tutorials is also challenging.<br/>
 Finally, we found, at least for our project, a good solution which does the job and whose setup I'd like to write down/preserve (find the [corrsponding code in this repo][repo]).
 <!--more-->
 So after a few flops we stumbled upon [the open-wc project][openwc] and their [testing modules][openwc-testing]. Since we had our project already setup we were just interested in the testing stuff - thus we tried to integrate only those dependencies (and skipped the scaffolding-, webpack-, transpiling-stuff).<br/>
