@@ -1,21 +1,20 @@
 +++
 title = "Cors by Example"
 date = 2019-08-30T15:33:13+02:00
-draft = true
 tags = ["cors", "api", "fetch", "web-components"]
 +++
 
 More often than not CORS mean little more to developers than just getting rid of the infamous browser error 
 ![CORS error](/posts/cors-error.png)
-in order to continue cranking out features as soon as possible.
+in order to continue cranking out features as soon as possible. In other words, it's not the best understood concept out there.
 
-Hence, to shed some light upon the topic, I'd like to give some working examples of CORS setups and show why they work. The more detailed explanation I relinquish to the excellent [MDN documentation][cors] if you'd like to learn more about it.
+Hence, to shed more light upon the topic, I'd like to give some working examples of CORS setups and show why they work. The more detailed explanation about the backing concepts I relinquish to the excellent [MDN documentation][cors] if you'd like to dig deeper.
 
 ## What is it
 
-For security reasons a browser denies a webpage loaded from __origin A__ (i.e. `http://dogpics.com`) to embed resources which have to be [fetched][fetch] from a different __origin B__ (i.e. `http://catpics.com`). That is in essence what is normally refered to as [same-origin-policy][same-origin].
+For security reasons a browser denies frontend JavaScript loaded from __origin A__ (i.e. `http://dogpics.com`) to embed resources which have to be [fetched][fetch] from a different __origin B__ (i.e. `http://catpics.com`). That is in essence what is normally refered to as [same-origin-policy][same-origin].
 
-To bypass that restriction (but still prevent the inadvertent usage of resources) __origin A__ and __origin B__ can agree on a deliberate exchange of resources. They do this by defining a [Cross-Origin Resource Sharing][cors] strategy (or [CORS][cors] for short). When done properly the scenario described above becomes possible again and the webpage of `http://dogpics.com` can also embed resources from `http://catpics.com`.
+To bypass that restriction (but still prevent the inadvertent usage of resources) __origin A__ and __origin B__ can agree on a deliberate exchange of resources. They do this by defining a [Cross-Origin Resource Sharing][cors] strategy (or [CORS][cors] for short). When done properly the scenario described above becomes possible again and frontend JavaScript loaded via `http://dogpics.com` can also embed resources from `http://catpics.com`.
 
 ## When do I need it
 
@@ -30,10 +29,10 @@ origin B | Same Origin | Why
 
 ## CORS headers and their effect
 
-Basically, it's the __origin B__ server which determines who is able to embed its resources by using a bunch of [HTTP-headers][headers]. Nevertheless, for some use-cases the requesting party (here the frontend JavaScript of __origin A__) also has to be adjusted. Also depending on the use-case is the choice of [CORS-headers][headers] to be applied.<br/>
+Basically, it's the __origin B__ server which determines who is able to embed its resources by using a bunch of [HTTP-headers][headers]. Nevertheless, for some use-cases the requesting party (here the frontend JavaScript of __origin A__) has to be adjusted too. Also depending on the use-case is the choice of [CORS-headers][headers] to be applied.<br/>
 Here's a short recap of the most important CORS-headers (again, details can be found [here][headers]) by which __origin B__ can control who else can fetch its resources:
 
-- `Access-Control-Allow-Origin`: can only be set to one specific origin which is then allowed to fetch from this server. It can also be set to wildcard `'*'` but this value is __mutually exclusive__ to `"include"` credentials mode (which makes it useless when dealing with auth-cookies/headers and is most probably only relevant for local development).
+- `Access-Control-Allow-Origin`: can only be set to one specific origin which is then allowed to fetch from this server. It can also be set to wildcard `'*'` but this value is __mutually exclusive__ to `"include"` credentials mode (which makes it useless when dealing with auth-cookies).
 - `Access-Control-Allow-Credentials`: _When a request's credentials mode (`Request.credentials`) is `"include"`, browsers will only expose the response to frontend JavaScript code if the `Access-Control-Allow-Credentials` value is `true` ([see here for more details][credentials])_
 - `Access-Control-Allow-Methods`: all allowed methods which can be used in the actual fetch call 
 - `Access-Control-Allow-Headers`: _Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request._ Also allows wildcard `'*'` but again doesn't work with auth-cookies/header etc. 
@@ -97,7 +96,7 @@ __Result:__
 The usage of cookies has a bunch of implications for the setup to work:
 
 - first, the client has to use `include` credentials mode to make sure the browser includes the __origin B__ cookies when issuing the GET-request.
-- consequently, __origin B__ has to set the CORS-header `Access-Control-Allow-Credentials` to `true` - if that is not set (or set to `false`), it won't work (since the client explicitly requested it).
+- consequently, __origin B__ has to set the CORS-header `Access-Control-Allow-Credentials` to `true` - if that is not set (or set to `false`), it won't work.
 - when using `Access-Control-Allow-Credentials:true` the wildcard `'*'` for `Access-Control-Allow-Origin` is not applicable anymore - hence we have to be explicit about who actually is __origin A__.
 
 ### Example 3 (with Auth-Tokens):
@@ -129,12 +128,12 @@ Access-Control-Allow-Methods: 'GET'
 
 __Result:__
 
-This is basically the same setup as in __Example 1__ except that we explicitly allow the `Authorization` header as well<br/>
+This is basically the same setup as in __Example 1__ except that we explicitly allow the `Authorization` header as well.<br/>
 _Notice: In those cases (with or without credentials-mode) make sure that you use a TLS-connection._
 
 ## Test it out yourself
 
-When you'd like to test this yourself you can over to [this repository][repo] in order to setup a simple 2-server constellation where one origin (`http://localhost:8081`) is including a resource of the other origin (`http://localhost:8080`). Using the UI you can tweak the server-headers and the config for the fetch-request.
+When you'd like to test this yourself head over to [this repository][repo] in order to setup a simple 2-server constellation where one origin (`http://localhost:8081`) is embedding a resource of the other one (`http://localhost:8080`). Using the UI you can tweak the server-headers and the config for the fetch-request.
 
 ![CORS UI](/posts/cors-ui.png)
 
