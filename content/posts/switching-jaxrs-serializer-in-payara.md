@@ -1,5 +1,5 @@
 +++
-title = "Switching JaxRS serializer in payara"
+title = "Switching JAX-RS serializer in payara"
 date = 2020-01-16T09:00:36+01:00
 tags = ["payara", "jax-rs"]
 +++
