@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>users on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/users/</link>
+    <description>Recent content in users on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Aug 2019 10:40:33 +0200</lastBuildDate>
+    
+	<atom:link href="https://schoeffm.github.io/tags/users/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux User Management</title>
+      <link>https://schoeffm.github.io/posts/linux-user-management/</link>
+      <pubDate>Sat, 10 Aug 2019 10:40:33 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/linux-user-management/</guid>
+      <description>Cheatsheet for Linux User Management
+Handling users # adds a new user called &amp;#39;schoeffm&amp;#39; useradd -m -s /bin/zsh -G docker schoeffm # └┬┘└────┬─────┘└─┬─────┘ # │ │ │ # │ │ └─&amp;gt; List of groups the user # │ │ should be a member of # │ └─&amp;gt; login shell of the new account # └────────&amp;gt; also create a home directory for this # account # Assigns a new UID to &amp;lt;─────┐ # this account │ # ┌──┴──┐ usermod -aG docker -s /bin/zsh -L|U -u 4711 schoeffm # └───┬────┘ └───┬─────┘ └─┬─┘ # │ │ └─&amp;gt; Lock or Unlock user # │ └─&amp;gt; set new login shell for account # └────────────&amp;gt; append to the list of groups # without &amp;#39;a&amp;#39; this will replace # the group list userdel not explicitly shown here since it&amp;rsquo;s comprehensible.</description>
+    </item>
+    
+  </channel>
+</rss>

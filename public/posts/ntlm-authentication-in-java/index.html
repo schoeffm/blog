@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Recently I had to integrate a java based application with a web-service that used NTLM authentication. Since this was the first time I came across NTLM I initially had to explore how to deal with that auth-scheme. 
+Luckily, I finally stumbled upon the Authenticator-class in Java and learned that there is build in support for NTLM already.'>
+<meta name='theme-color' content='#44ccff'>
+
+<meta property='og:title' content='Ntlm Authentication in Java • Personal PasteBin'>
+<meta property='og:description' content='Recently I had to integrate a java based application with a web-service that used NTLM authentication. Since this was the first time I came across NTLM I initially had to explore how to deal with that auth-scheme. 
+Luckily, I finally stumbled upon the Authenticator-class in Java and learned that there is build in support for NTLM already.'>
+<meta property='og:url' content='https://schoeffm.github.io/posts/ntlm-authentication-in-java/'>
+<meta property='og:site_name' content='Personal PasteBin'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='java'><meta property='article:tag' content='security'><meta property='article:tag' content='ntlm'><meta property='article:tag' content='authentication'><meta property='article:published_time' content='2019-09-20T07:52:55&#43;02:00'/><meta property='article:modified_time' content='2019-09-20T07:52:55&#43;02:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.63.2" />
+
+  <title>Ntlm Authentication in Java • Personal PasteBin</title>
+  <link rel='canonical' href='https://schoeffm.github.io/posts/ntlm-authentication-in-java/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.fb20af92.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#44ccff;}
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148436067-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-148436067-1');
+</script>
+
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/'>
+      Personal PasteBin
+      </a>
+    </h2>
+    <div class='desc'>
+    @schoeffm
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud no-shuffle'><li>
+        <a href='/tags/api/' style='font-size:1em'>api</a>
+      </li><li>
+        <a href='/tags/authentication/' style='font-size:1em'>authentication</a>
+      </li><li>
+        <a href='/tags/base64/' style='font-size:1em'>base64</a>
+      </li><li>
+        <a href='/tags/bash/' style='font-size:1em'>bash</a>
+      </li><li>
+        <a href='/tags/cheatsheet/' style='font-size:1.2em'>cheatsheet</a>
+      </li><li>
+        <a href='/tags/chunk/' style='font-size:1em'>chunk</a>
+      </li><li>
+        <a href='/tags/ci/cd/' style='font-size:1em'>ci/cd</a>
+      </li><li>
+        <a href='/tags/cli/' style='font-size:1.8em'>cli</a>
+      </li><li>
+        <a href='/tags/configuration/' style='font-size:1em'>configuration</a>
+      </li><li>
+        <a href='/tags/cors/' style='font-size:1em'>cors</a>
+      </li><li>
+        <a href='/tags/dev/' style='font-size:1em'>dev</a>
+      </li><li>
+        <a href='/tags/devops/' style='font-size:2em'>devops</a>
+      </li><li>
+        <a href='/tags/docker/' style='font-size:1em'>docker</a>
+      </li><li>
+        <a href='/tags/docker4mac/' style='font-size:1em'>docker4mac</a>
+      </li><li>
+        <a href='/tags/fetch/' style='font-size:1.2em'>fetch</a>
+      </li><li>
+        <a href='/tags/jakartaee/' style='font-size:1.2em'>jakartaee</a>
+      </li><li>
+        <a href='/tags/java/' style='font-size:1em'>java</a>
+      </li><li>
+        <a href='/tags/jax-rs/' style='font-size:1.4em'>jax-rs</a>
+      </li><li>
+        <a href='/tags/jee/' style='font-size:1.2em'>jee</a>
+      </li><li>
+        <a href='/tags/jenkins/' style='font-size:1em'>jenkins</a>
+      </li><li>
+        <a href='/tags/jmeter/' style='font-size:1em'>jmeter</a>
+      </li><li>
+        <a href='/tags/jq/' style='font-size:1em'>jq</a>
+      </li><li>
+        <a href='/tags/json/' style='font-size:1em'>json</a>
+      </li><li>
+        <a href='/tags/kubernetes/' style='font-size:1em'>kubernetes</a>
+      </li><li>
+        <a href='/tags/linux/' style='font-size:1.2em'>linux</a>
+      </li><li>
+        <a href='/tags/loadtesting/' style='font-size:1em'>loadtesting</a>
+      </li><li>
+        <a href='/tags/microprofile/' style='font-size:1.2em'>microprofile</a>
+      </li><li>
+        <a href='/tags/mitmproxy/' style='font-size:1em'>mitmproxy</a>
+      </li><li>
+        <a href='/tags/network/' style='font-size:1.2em'>network</a>
+      </li><li>
+        <a href='/tags/ntlm/' style='font-size:1em'>ntlm</a>
+      </li><li>
+        <a href='/tags/openshift/' style='font-size:1em'>openshift</a>
+      </li><li>
+        <a href='/tags/payara/' style='font-size:1em'>payara</a>
+      </li><li>
+        <a href='/tags/performance/' style='font-size:1em'>performance</a>
+      </li><li>
+        <a href='/tags/permissions/' style='font-size:1em'>permissions</a>
+      </li><li>
+        <a href='/tags/pipelines/' style='font-size:1em'>pipelines</a>
+      </li><li>
+        <a href='/tags/proxy/' style='font-size:1em'>proxy</a>
+      </li><li>
+        <a href='/tags/rest/' style='font-size:1em'>rest</a>
+      </li><li>
+        <a href='/tags/scripting/' style='font-size:1em'>scripting</a>
+      </li><li>
+        <a href='/tags/security/' style='font-size:1em'>security</a>
+      </li><li>
+        <a href='/tags/ssh/' style='font-size:1em'>ssh</a>
+      </li><li>
+        <a href='/tags/streaming/' style='font-size:1.2em'>streaming</a>
+      </li><li>
+        <a href='/tags/taurus/' style='font-size:1em'>taurus</a>
+      </li><li>
+        <a href='/tags/tcpdump/' style='font-size:1em'>tcpdump</a>
+      </li><li>
+        <a href='/tags/testing/' style='font-size:1.2em'>testing</a>
+      </li><li>
+        <a href='/tags/tools/' style='font-size:1.4em'>tools</a>
+      </li><li>
+        <a href='/tags/users/' style='font-size:1em'>users</a>
+      </li><li>
+        <a href='/tags/web-components/' style='font-size:1.4em'>web-components</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='' class="">
+          <span></span>
+        </a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/'>Personal PasteBin</a></li><li><a href='/posts/'>Posts</a></li><li><span>Ntlm Authentication in Java</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Personal PasteBin</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Ntlm Authentication in Java</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2019-09-20T07:52:55&#43;02:00'>2019, Sep 20</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+4 mins read
+</span>
+
+
+  
+  
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>Recently I had to integrate a java based application with a web-service that used NTLM authentication. Since this was the first time I came across NTLM I initially had to explore how to deal with that auth-scheme. <!-- raw HTML omitted -->
+Luckily, I finally stumbled upon the <code>Authenticator</code>-class in Java and learned that there is build in support for NTLM already.<!-- raw HTML omitted --></p>
+<h2 id="how-is-ntlm-supposed-to-work">How is NTLM supposed to work?</h2>
+<p>Well, as you&rsquo;ve might guessed I&rsquo;m not an expert here and if you&rsquo;d like to learn more I encourage you to head over to <a href="https://www.innovation.ch/personal/ronald/ntlm.html">this reverse engineering documentation</a> of the NTLM protocol. For the sake of this post though, we just focus on the handshake which
+provides a pretty good overview of the steps involved:</p>
+<figure>
+    <img src="/posts/ntlm_auth/ntlm_auth.png"
+         alt="NTLM handshake" width="65%"/> 
+</figure>
+
+<p><strong>1.1 Client &ndash;[POST]&ndash;&gt; Server</strong>:<!-- raw HTML omitted -->
+In our use-case the java app issues a web-service call (thus a <code>POST</code>-call) to the destination. Right now this call doesn&rsquo;t contain any authentication information at all.<!-- raw HTML omitted -->
+<strong>1.2 Client &lt;&ndash;[401]&ndash; Server</strong>:<!-- raw HTML omitted -->
+The server answers with a <code>401</code> (== Unauthorized) return code and announces the NTLM auth-scheme by adding a <code>WWW-Authenticate: NTLM</code>-header to the response.</p>
+<p><strong>2.1 Client &ndash;[POST]&ndash;&gt; Server</strong>:<!-- raw HTML omitted -->
+The client re-sends its request but this time an <code>Authorization</code>-header is added as well. The header contains the <code>NTLM</code> auth-scheme and a so called type 1 message that indicates supported options.<!-- raw HTML omitted -->
+<strong>2.2 Client &lt;&ndash;[401]&ndash; Server</strong>:<!-- raw HTML omitted -->
+Again the server responds with a <code>401</code> code but this time it also returns a challenge (basically a random number) contained in the <code>WWW-Authenticate</code>-header again.</p>
+<p><strong>3.1 Client &ndash;[POST]&ndash;&gt; Server</strong>:<!-- raw HTML omitted -->
+And again the client sends its original request but now the <code>Authorization</code>-header contains the encrypted challenge received in step 2.2. The key for this encryption is the users password-hash.<!-- raw HTML omitted -->
+<strong>3.2 Client &lt;&ndash;[200]&ndash; Server</strong>:<!-- raw HTML omitted -->
+The server now does the equivalent (by asking the domain controller for the password hash) and compares the encryption results - finally, if everything matches, the requested resource is returned.</p>
+<h2 id="how-to-support-that-in-java">How to support that in Java</h2>
+<p>All this handshaking looks pretty elaborate - but the good news is that the NTLM authentication is already supported (<em>the more challenging task was to figure out how to leverage that support</em>).</p>
+<p>Normally, you already know that you&rsquo;ll have to authenticate yourself and for schemes like <strong>Basic Auth</strong> you usually add your authentication information directly to the request (<em>also to prevent an additional round-trip</em>). Hence no surprise, that you can spent a good portion of your career without knowing about the <a href="https://docs.oracle.com/javase/7/docs/api/java/net/Authenticator.html"><code>java.net.Authenticator</code></a> class.<!-- raw HTML omitted -->
+It was introduced in Java 1.2 (so it&rsquo;s quite old) initially without NTLM support which was added later. Besides the <a href="https://docs.oracle.com/javase/8/docs/api/java/net/Authenticator.html">API-documentation</a> the usage of that class is also described in the <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/net/http-auth.html">Java SE documentation</a>.</p>
+<p>So, how this works is that you register a sub-class of <code>java.net.Authenticator</code> for your whole application using the static method <code>Authenticator.setDefault(Authenticator)</code>. The only thing you&rsquo;ll have to overwrite in that sub-class is the <code>getPasswordAuthentication()</code>-method which gets called by the networking-stack whenever a proxy or a server requests authentication (<em>i.e. during a handshake as described above</em>).<!-- raw HTML omitted -->
+It&rsquo;s up to your implementation how it retrieves the credentials - it could be interactive (<em>i.e. when used in fat-client</em>) or it can return pre-configured credentials (<em>i.e. in a server environment</em>).</p>
+<p>One downside of that approach is that you can only register one instance - hence, if you&rsquo;ll have to support a bunch of different servers or different authentication schemes you&rsquo;d have to distribute that responsibility from within our <code>Authenticator</code>-implementation (<em>just to prevent it from becoming a mess - technically of course you can put everything into one class</em>).</p>
+<p>So, in a JEE environment you could define a startup-singleton which globally registers a suitable <code>Authenticator</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Singleton</span>
+<span style="color:#a6e22e">@Startup</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AuthenticatorInitializer</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Inject</span>
+    <span style="color:#a6e22e">@ConfigProperty</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ntlm.user&#34;</span><span style="color:#f92672">)</span>
+    String username<span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@Inject</span>
+    <span style="color:#a6e22e">@ConfigProperty</span><span style="color:#f92672">(</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ntlm.password&#34;</span><span style="color:#f92672">)</span>
+    String password<span style="color:#f92672">;</span>
+    
+    <span style="color:#a6e22e">@PostConstruct</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initializeAuthenticator</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>        
+        Authenticator<span style="color:#f92672">.</span><span style="color:#a6e22e">setDefault</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> NtlmAuthenticator<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> password<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    
+    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NtlmAuthenticator</span> <span style="color:#66d9ef">extends</span> Authenticator <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">private</span> PasswordAuthentication passwordAuthentication<span style="color:#f92672">;</span>
+                
+        NtlmAuthenticator<span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String username<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> String password<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">passwordAuthentication</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PasswordAuthentication<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> password<span style="color:#f92672">.</span><span style="color:#a6e22e">toCharArray</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
+        <span style="color:#f92672">}</span>
+        
+        <span style="color:#66d9ef">protected</span> PasswordAuthentication <span style="color:#a6e22e">getPasswordAuthentication</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestingScheme</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">equalsIgnoreCase</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;NTLM&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span> 
+                <span style="color:#f92672">?</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">passwordAuthentication</span>
+                <span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>As you can see, within the <code>getPasswordAuthentication()</code>-method you&rsquo;ll have access to further information about the requesting server. This allows you to distinguish between different servers, different auth-schemes etc. and thus enabling you to return matching credentials even when dealing with several service-provider.</p>
+<p>That should do the trick and if you&rsquo;d like to see what exactly is exchanged during a handshake I recommend you to have a look into my <a href="/posts/network-debugging-of-containerized-java-apps/">network debugging post</a> as well.</p>
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/java/'>java</a>, <a class='tag' href='/tags/security/'>security</a>, <a class='tag' href='/tags/ntlm/'>ntlm</a>, <a class='tag' href='/tags/authentication/'>authentication</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/network-debugging-of-containerized-java-apps/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Network Debugging of Containerized Java Apps</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/posts/access-host-from-inside-a-docker-container/'>
+        <span class='screen-reader-text'>Next post: </span>Access Host From Inside a Docker Container<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><div class='copyright'>
+  <p> &copy; 2019-2020 schoeffm </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src ="/assets/js/"</script>
+
+<script src='https://schoeffm.github.io/assets/js/main.9e5c4cf4.js'></script><script src='/js/custom.js'></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

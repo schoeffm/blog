@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>payara on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/payara/</link>
+    <description>Recent content in payara on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 16 Jan 2020 09:00:36 +0100</lastBuildDate>
+    
+	<atom:link href="https://schoeffm.github.io/tags/payara/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Switching JaxRS serializer in payara</title>
+      <link>https://schoeffm.github.io/posts/switching-jaxrs-serializer-in-payara/</link>
+      <pubDate>Thu, 16 Jan 2020 09:00:36 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/switching-jaxrs-serializer-in-payara/</guid>
+      <description>When working with Payara I stumble every once in a while over JSON-serialization issues. Payara v4 uses MOXy as default provider while Payara v5 comes with JsonB-support which apparently makes use of Yasson.
+Although, after moving from v4 to v5 I&amp;rsquo;m fine with the JsonB-default it may still be useful to use Jackson as JSON provider instead of the default one (to be honest, many things just worked out-of-the-box with Jackson like reflective access to props (no extra getter necessary) or support for Maps etc.</description>
+    </item>
+    
+  </channel>
+</rss>

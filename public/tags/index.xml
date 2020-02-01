@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/</link>
+    <description>Recent content in Tags on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 29 Jan 2020 15:07:59 +0100</lastBuildDate>
+    
+	<atom:link href="https://schoeffm.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>bash</title>
+      <link>https://schoeffm.github.io/tags/bash/</link>
+      <pubDate>Wed, 29 Jan 2020 15:07:59 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cli</title>
+      <link>https://schoeffm.github.io/tags/cli/</link>
+      <pubDate>Wed, 29 Jan 2020 15:07:59 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/cli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jq</title>
+      <link>https://schoeffm.github.io/tags/jq/</link>
+      <pubDate>Wed, 29 Jan 2020 15:07:59 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/jq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>json</title>
+      <link>https://schoeffm.github.io/tags/json/</link>
+      <pubDate>Wed, 29 Jan 2020 15:07:59 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/json/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scripting</title>
+      <link>https://schoeffm.github.io/tags/scripting/</link>
+      <pubDate>Wed, 29 Jan 2020 15:07:59 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/scripting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tools</title>
+      <link>https://schoeffm.github.io/tags/tools/</link>
+      <pubDate>Wed, 29 Jan 2020 15:07:59 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jax-rs</title>
+      <link>https://schoeffm.github.io/tags/jax-rs/</link>
+      <pubDate>Thu, 16 Jan 2020 09:00:36 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/jax-rs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>payara</title>
+      <link>https://schoeffm.github.io/tags/payara/</link>
+      <pubDate>Thu, 16 Jan 2020 09:00:36 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/payara/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dev</title>
+      <link>https://schoeffm.github.io/tags/dev/</link>
+      <pubDate>Wed, 01 Jan 2020 12:00:56 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://schoeffm.github.io/tags/docker/</link>
+      <pubDate>Wed, 01 Jan 2020 12:00:56 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker4mac</title>
+      <link>https://schoeffm.github.io/tags/docker4mac/</link>
+      <pubDate>Wed, 01 Jan 2020 12:00:56 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/docker4mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>authentication</title>
+      <link>https://schoeffm.github.io/tags/authentication/</link>
+      <pubDate>Fri, 20 Sep 2019 07:52:55 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/authentication/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://schoeffm.github.io/tags/java/</link>
+      <pubDate>Fri, 20 Sep 2019 07:52:55 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ntlm</title>
+      <link>https://schoeffm.github.io/tags/ntlm/</link>
+      <pubDate>Fri, 20 Sep 2019 07:52:55 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/ntlm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>security</title>
+      <link>https://schoeffm.github.io/tags/security/</link>
+      <pubDate>Fri, 20 Sep 2019 07:52:55 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devops</title>
+      <link>https://schoeffm.github.io/tags/devops/</link>
+      <pubDate>Thu, 19 Sep 2019 16:27:21 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mitmproxy</title>
+      <link>https://schoeffm.github.io/tags/mitmproxy/</link>
+      <pubDate>Thu, 19 Sep 2019 16:27:21 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/mitmproxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>network</title>
+      <link>https://schoeffm.github.io/tags/network/</link>
+      <pubDate>Thu, 19 Sep 2019 16:27:21 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>proxy</title>
+      <link>https://schoeffm.github.io/tags/proxy/</link>
+      <pubDate>Thu, 19 Sep 2019 16:27:21 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/proxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>api</title>
+      <link>https://schoeffm.github.io/tags/api/</link>
+      <pubDate>Fri, 30 Aug 2019 15:33:13 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cors</title>
+      <link>https://schoeffm.github.io/tags/cors/</link>
+      <pubDate>Fri, 30 Aug 2019 15:33:13 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/cors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fetch</title>
+      <link>https://schoeffm.github.io/tags/fetch/</link>
+      <pubDate>Fri, 30 Aug 2019 15:33:13 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/fetch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web-components</title>
+      <link>https://schoeffm.github.io/tags/web-components/</link>
+      <pubDate>Fri, 30 Aug 2019 15:33:13 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/web-components/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ci/cd</title>
+      <link>https://schoeffm.github.io/tags/ci/cd/</link>
+      <pubDate>Wed, 14 Aug 2019 10:41:28 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/ci/cd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jenkins</title>
+      <link>https://schoeffm.github.io/tags/jenkins/</link>
+      <pubDate>Wed, 14 Aug 2019 10:41:28 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jmeter</title>
+      <link>https://schoeffm.github.io/tags/jmeter/</link>
+      <pubDate>Wed, 14 Aug 2019 10:41:28 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/jmeter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>loadtesting</title>
+      <link>https://schoeffm.github.io/tags/loadtesting/</link>
+      <pubDate>Wed, 14 Aug 2019 10:41:28 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/loadtesting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>performance</title>
+      <link>https://schoeffm.github.io/tags/performance/</link>
+      <pubDate>Wed, 14 Aug 2019 10:41:28 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/performance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pipelines</title>
+      <link>https://schoeffm.github.io/tags/pipelines/</link>
+      <pubDate>Wed, 14 Aug 2019 10:41:28 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/pipelines/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>taurus</title>
+      <link>https://schoeffm.github.io/tags/taurus/</link>
+      <pubDate>Wed, 14 Aug 2019 10:41:28 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/taurus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>https://schoeffm.github.io/tags/testing/</link>
+      <pubDate>Wed, 14 Aug 2019 10:41:28 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cheatsheet</title>
+      <link>https://schoeffm.github.io/tags/cheatsheet/</link>
+      <pubDate>Sat, 10 Aug 2019 10:40:33 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/cheatsheet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://schoeffm.github.io/tags/linux/</link>
+      <pubDate>Sat, 10 Aug 2019 10:40:33 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>users</title>
+      <link>https://schoeffm.github.io/tags/users/</link>
+      <pubDate>Sat, 10 Aug 2019 10:40:33 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/users/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>permissions</title>
+      <link>https://schoeffm.github.io/tags/permissions/</link>
+      <pubDate>Tue, 06 Aug 2019 08:59:37 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/permissions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tcpdump</title>
+      <link>https://schoeffm.github.io/tags/tcpdump/</link>
+      <pubDate>Tue, 30 Jul 2019 10:08:07 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/tcpdump/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chunk</title>
+      <link>https://schoeffm.github.io/tags/chunk/</link>
+      <pubDate>Sun, 28 Jul 2019 12:18:59 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/chunk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>streaming</title>
+      <link>https://schoeffm.github.io/tags/streaming/</link>
+      <pubDate>Sun, 28 Jul 2019 12:18:59 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/streaming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jakartaee</title>
+      <link>https://schoeffm.github.io/tags/jakartaee/</link>
+      <pubDate>Sat, 27 Jul 2019 11:18:59 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/jakartaee/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jee</title>
+      <link>https://schoeffm.github.io/tags/jee/</link>
+      <pubDate>Sat, 27 Jul 2019 11:18:59 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/jee/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>microprofile</title>
+      <link>https://schoeffm.github.io/tags/microprofile/</link>
+      <pubDate>Sat, 27 Jul 2019 11:18:59 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/microprofile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>base64</title>
+      <link>https://schoeffm.github.io/tags/base64/</link>
+      <pubDate>Sat, 13 Jul 2019 14:58:39 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/base64/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://schoeffm.github.io/tags/kubernetes/</link>
+      <pubDate>Sat, 13 Jul 2019 14:58:39 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openshift</title>
+      <link>https://schoeffm.github.io/tags/openshift/</link>
+      <pubDate>Sat, 13 Jul 2019 14:58:39 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/openshift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>configuration</title>
+      <link>https://schoeffm.github.io/tags/configuration/</link>
+      <pubDate>Mon, 24 Jun 2019 15:35:15 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/configuration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>https://schoeffm.github.io/tags/ssh/</link>
+      <pubDate>Mon, 24 Jun 2019 15:35:15 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rest</title>
+      <link>https://schoeffm.github.io/tags/rest/</link>
+      <pubDate>Mon, 10 Jun 2019 10:40:12 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/rest/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

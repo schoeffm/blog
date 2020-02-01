@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Cheatsheet for Linux User Management
+Handling users # adds a new user called &#39;schoeffm&#39; useradd -m -s /bin/zsh -G docker schoeffm # └┬┘└────┬─────┘└─┬─────┘ # │ │ │ # │ │ └─&gt; List of groups the user # │ │ should be a member of # │ └─&gt; login shell of the new account # └────────&gt; also create a home directory for this # account # Assigns a new UID to &lt;─────┐ # this account │ # ┌──┴──┐ usermod -aG docker -s /bin/zsh -L|U -u 4711 schoeffm # └───┬────┘ └───┬─────┘ └─┬─┘ # │ │ └─&gt; Lock or Unlock user # │ └─&gt; set new login shell for account # └────────────&gt; append to the list of groups # without &#39;a&#39; this will replace # the group list userdel not explicitly shown here since it&rsquo;s comprehensible.'>
+<meta name='theme-color' content='#44ccff'>
+
+<meta property='og:title' content='Linux User Management • Personal PasteBin'>
+<meta property='og:description' content='Cheatsheet for Linux User Management
+Handling users # adds a new user called &#39;schoeffm&#39; useradd -m -s /bin/zsh -G docker schoeffm # └┬┘└────┬─────┘└─┬─────┘ # │ │ │ # │ │ └─&gt; List of groups the user # │ │ should be a member of # │ └─&gt; login shell of the new account # └────────&gt; also create a home directory for this # account # Assigns a new UID to &lt;─────┐ # this account │ # ┌──┴──┐ usermod -aG docker -s /bin/zsh -L|U -u 4711 schoeffm # └───┬────┘ └───┬─────┘ └─┬─┘ # │ │ └─&gt; Lock or Unlock user # │ └─&gt; set new login shell for account # └────────────&gt; append to the list of groups # without &#39;a&#39; this will replace # the group list userdel not explicitly shown here since it&rsquo;s comprehensible.'>
+<meta property='og:url' content='https://schoeffm.github.io/posts/linux-user-management/'>
+<meta property='og:site_name' content='Personal PasteBin'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='cheatsheet'><meta property='article:tag' content='users'><meta property='article:tag' content='linux'><meta property='article:tag' content='devops'><meta property='article:published_time' content='2019-08-15T00:00:00&#43;02:00'/><meta property='article:modified_time' content='2019-08-10T10:40:33&#43;02:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.63.2" />
+
+  <title>Linux User Management • Personal PasteBin</title>
+  <link rel='canonical' href='https://schoeffm.github.io/posts/linux-user-management/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.fb20af92.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#44ccff;}
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148436067-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-148436067-1');
+</script>
+
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/'>
+      Personal PasteBin
+      </a>
+    </h2>
+    <div class='desc'>
+    @schoeffm
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud no-shuffle'><li>
+        <a href='/tags/api/' style='font-size:1em'>api</a>
+      </li><li>
+        <a href='/tags/authentication/' style='font-size:1em'>authentication</a>
+      </li><li>
+        <a href='/tags/base64/' style='font-size:1em'>base64</a>
+      </li><li>
+        <a href='/tags/bash/' style='font-size:1em'>bash</a>
+      </li><li>
+        <a href='/tags/cheatsheet/' style='font-size:1.2em'>cheatsheet</a>
+      </li><li>
+        <a href='/tags/chunk/' style='font-size:1em'>chunk</a>
+      </li><li>
+        <a href='/tags/ci/cd/' style='font-size:1em'>ci/cd</a>
+      </li><li>
+        <a href='/tags/cli/' style='font-size:1.8em'>cli</a>
+      </li><li>
+        <a href='/tags/configuration/' style='font-size:1em'>configuration</a>
+      </li><li>
+        <a href='/tags/cors/' style='font-size:1em'>cors</a>
+      </li><li>
+        <a href='/tags/dev/' style='font-size:1em'>dev</a>
+      </li><li>
+        <a href='/tags/devops/' style='font-size:2em'>devops</a>
+      </li><li>
+        <a href='/tags/docker/' style='font-size:1em'>docker</a>
+      </li><li>
+        <a href='/tags/docker4mac/' style='font-size:1em'>docker4mac</a>
+      </li><li>
+        <a href='/tags/fetch/' style='font-size:1.2em'>fetch</a>
+      </li><li>
+        <a href='/tags/jakartaee/' style='font-size:1.2em'>jakartaee</a>
+      </li><li>
+        <a href='/tags/java/' style='font-size:1em'>java</a>
+      </li><li>
+        <a href='/tags/jax-rs/' style='font-size:1.4em'>jax-rs</a>
+      </li><li>
+        <a href='/tags/jee/' style='font-size:1.2em'>jee</a>
+      </li><li>
+        <a href='/tags/jenkins/' style='font-size:1em'>jenkins</a>
+      </li><li>
+        <a href='/tags/jmeter/' style='font-size:1em'>jmeter</a>
+      </li><li>
+        <a href='/tags/jq/' style='font-size:1em'>jq</a>
+      </li><li>
+        <a href='/tags/json/' style='font-size:1em'>json</a>
+      </li><li>
+        <a href='/tags/kubernetes/' style='font-size:1em'>kubernetes</a>
+      </li><li>
+        <a href='/tags/linux/' style='font-size:1.2em'>linux</a>
+      </li><li>
+        <a href='/tags/loadtesting/' style='font-size:1em'>loadtesting</a>
+      </li><li>
+        <a href='/tags/microprofile/' style='font-size:1.2em'>microprofile</a>
+      </li><li>
+        <a href='/tags/mitmproxy/' style='font-size:1em'>mitmproxy</a>
+      </li><li>
+        <a href='/tags/network/' style='font-size:1.2em'>network</a>
+      </li><li>
+        <a href='/tags/ntlm/' style='font-size:1em'>ntlm</a>
+      </li><li>
+        <a href='/tags/openshift/' style='font-size:1em'>openshift</a>
+      </li><li>
+        <a href='/tags/payara/' style='font-size:1em'>payara</a>
+      </li><li>
+        <a href='/tags/performance/' style='font-size:1em'>performance</a>
+      </li><li>
+        <a href='/tags/permissions/' style='font-size:1em'>permissions</a>
+      </li><li>
+        <a href='/tags/pipelines/' style='font-size:1em'>pipelines</a>
+      </li><li>
+        <a href='/tags/proxy/' style='font-size:1em'>proxy</a>
+      </li><li>
+        <a href='/tags/rest/' style='font-size:1em'>rest</a>
+      </li><li>
+        <a href='/tags/scripting/' style='font-size:1em'>scripting</a>
+      </li><li>
+        <a href='/tags/security/' style='font-size:1em'>security</a>
+      </li><li>
+        <a href='/tags/ssh/' style='font-size:1em'>ssh</a>
+      </li><li>
+        <a href='/tags/streaming/' style='font-size:1.2em'>streaming</a>
+      </li><li>
+        <a href='/tags/taurus/' style='font-size:1em'>taurus</a>
+      </li><li>
+        <a href='/tags/tcpdump/' style='font-size:1em'>tcpdump</a>
+      </li><li>
+        <a href='/tags/testing/' style='font-size:1.2em'>testing</a>
+      </li><li>
+        <a href='/tags/tools/' style='font-size:1.4em'>tools</a>
+      </li><li>
+        <a href='/tags/users/' style='font-size:1em'>users</a>
+      </li><li>
+        <a href='/tags/web-components/' style='font-size:1.4em'>web-components</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='' class="">
+          <span></span>
+        </a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/'>Personal PasteBin</a></li><li><a href='/posts/'>Posts</a></li><li><span>Linux User Management</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Personal PasteBin</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Linux User Management</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2019-08-10T10:40:33&#43;02:00'>2019, Aug 10</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+3 mins read
+</span>
+
+
+  
+  
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>Cheatsheet for <em>Linux User Management</em></p>
+<h3 id="handling-users">Handling users</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># adds a new user called &#39;schoeffm&#39;</span>
+useradd -m -s /bin/zsh -G docker schoeffm
+<span style="color:#75715e">#       └┬┘└────┬─────┘└─┬─────┘</span>
+<span style="color:#75715e">#        │      │        │</span>
+<span style="color:#75715e">#        │      │        └─&gt; List of groups the user</span> 
+<span style="color:#75715e">#        │      │            should be a member of</span> 
+<span style="color:#75715e">#        │      └─&gt; login shell of the new account</span>
+<span style="color:#75715e">#        └────────&gt; also create a home directory for this</span> 
+<span style="color:#75715e">#                   account</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#           Assigns a new UID to &lt;─────┐</span>
+<span style="color:#75715e">#           this account               │</span>
+<span style="color:#75715e">#                                   ┌──┴──┐</span> 
+usermod -aG docker -s /bin/zsh -L|U -u <span style="color:#ae81ff">4711</span> schoeffm
+<span style="color:#75715e">#       └───┬────┘ └───┬─────┘ └─┬─┘</span>
+<span style="color:#75715e">#           │          │         └─&gt; Lock or Unlock user</span>
+<span style="color:#75715e">#           │          └─&gt; set new login shell for account</span>
+<span style="color:#75715e">#           └────────────&gt; append to the list of groups</span> 
+<span style="color:#75715e">#                          without &#39;a&#39; this will replace</span>
+<span style="color:#75715e">#                          the group list</span></code></pre></div>
+<p><code>userdel</code> not explicitly shown here since it&rsquo;s comprehensible.</p>
+<h3 id="dealing-with-groups">Dealing with groups</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Introduces a new user-group called &#39;shared&#39;</span>
+groupadd -f -g <span style="color:#ae81ff">4711</span> shared
+<span style="color:#75715e">#         │ └──┬──┘</span>
+<span style="color:#75715e">#         │    └─&gt; assigns the given GID to the new group</span> 
+<span style="color:#75715e">#         └─&gt; force: will exit with rc zero even if the</span> 
+<span style="color:#75715e">#             group already exists (won&#39;t change the</span> 
+<span style="color:#75715e">#             existing group - so GID of existing group</span>
+<span style="color:#75715e">#             isn&#39;t updated)</span></code></pre></div>
+<p><code>groupmod</code> and <code>groupdel</code> not explicitly shown here since they&rsquo;re comprehensible.</p>
+<h3 id="information-gathering">Information gathering</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># list all available groups and their GID</span>
+awk -F<span style="color:#e6db74">&#39;:&#39;</span> <span style="color:#e6db74">&#39;{print $1 &#34; &#34; $3}&#39;</span> /etc/group
+<span style="color:#75715e">#   └─┬─┘         └───┬────┘  └───┬────┘</span>
+<span style="color:#75715e">#     │               │           └─&gt; input file</span>
+<span style="color:#75715e">#     │               └─&gt; print field 1 and 3 and</span>
+<span style="color:#75715e">#     │                   separate &#39;em with a single</span>
+<span style="color:#75715e">#     │                   space</span>
+<span style="color:#75715e">#     └─&gt; change default field-separator to use :</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># prints one entry of /etc/passwd (whole line)</span>
+awk -F<span style="color:#e6db74">&#39;:&#39;</span> <span style="color:#e6db74">&#39;/proxy/ {print}&#39;</span> /etc/passwd
+<span style="color:#75715e">#   └─┬─┘ └──┬──┘</span>
+<span style="color:#75715e">#     │      └─&gt; print only the line which matches this</span>
+<span style="color:#75715e">#     │           regex pattern (here username &#39;proxy&#39;)</span>
+<span style="color:#75715e">#     └─&gt; actually not needed here since we print the</span>
+<span style="color:#75715e">#         whole line anyways</span>
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+<span style="color:#75715e">#     │ └─┬─┘ └─┬─┘ └─┬┘└──────┬─────────┘</span>
+<span style="color:#75715e">#     │   │     │     │        └─&gt; login-shell</span>
+<span style="color:#75715e">#     │   │     │     └─&gt; user home directory</span>
+<span style="color:#75715e">#     │   │     └─&gt; primary group of this account</span>
+<span style="color:#75715e">#     │   └─&gt; UID:GID of this user and his primary</span> 
+<span style="color:#75715e">#     │       group</span>
+<span style="color:#75715e">#     └─&gt; stands for the password which isn&#39;t shown</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># lists all users currently logged in and what they&#39;re executing</span> 
+<span style="color:#75715e"># right now</span>
+w</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># although offers a bunch of options the simplest form of the</span>
+<span style="color:#75715e"># command already prints all necessary information</span>
+id <span style="color:#f92672">[</span>username<span style="color:#f92672">]</span>
+
+uid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span>
+<span style="color:#75715e">#   └──┬──┘ └────┬────┘ └─┬──────────┘</span>
+<span style="color:#75715e">#      │         │        └─&gt; all groups the user is a member of</span>
+<span style="color:#75715e">#      │         └─&gt; gid and name of the primary group of this</span> 
+<span style="color:#75715e">#      │             account</span>
+<span style="color:#75715e">#      └───────────&gt; uid and name of this account</span></code></pre></div>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/cheatsheet/'>cheatsheet</a>, <a class='tag' href='/tags/users/'>users</a>, <a class='tag' href='/tags/linux/'>linux</a>, <a class='tag' href='/tags/devops/'>devops</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/linux-permission-management/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Linux Permission Management</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/posts/integration-of-loadtests-within-jenkins-pipelines/'>
+        <span class='screen-reader-text'>Next post: </span>Using load-tests as quality gate in Jenkins pipelines<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><div class='copyright'>
+  <p> &copy; 2019-2020 schoeffm </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src ="/assets/js/"</script>
+
+<script src='https://schoeffm.github.io/assets/js/main.9e5c4cf4.js'></script><script src='/js/custom.js'></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

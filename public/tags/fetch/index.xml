@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fetch on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/fetch/</link>
+    <description>Recent content in fetch on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 30 Aug 2019 15:33:13 +0200</lastBuildDate>
+    
+	<atom:link href="https://schoeffm.github.io/tags/fetch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cors by Example</title>
+      <link>https://schoeffm.github.io/posts/cors-by-example/</link>
+      <pubDate>Fri, 30 Aug 2019 15:33:13 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/cors-by-example/</guid>
+      <description>More often than not CORS mean little more to developers than just getting rid of the infamous browser error in order to continue cranking out features as soon as possible. In other words, it&amp;rsquo;s not the best understood concept out there.
+Hence, to shed more light upon the topic, I&amp;rsquo;d like to give some working examples of CORS setups and show why they work. The more detailed explanation about the backing concepts I relinquish to the excellent MDN documentation if you&amp;rsquo;d like to dig deeper.</description>
+    </item>
+    
+    <item>
+      <title>Response streaming between JAX-RS and Web-Components (Part 2)</title>
+      <link>https://schoeffm.github.io/posts/response-streaming-between-jaxrs-and-webcomponents-part2/</link>
+      <pubDate>Sun, 28 Jul 2019 12:18:59 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/response-streaming-between-jaxrs-and-webcomponents-part2/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://schoeffm.github.io/posts/response-streaming-between-jaxrs-and-webcomponents-part1/&#34;&gt;part one&lt;/a&gt; we had a look at a JAX-RS endpoint that streams its content to the requesting client. Now I&amp;rsquo;d like to show how the &lt;code&gt;fetch&lt;/code&gt;-API can be used to consume that streamed content in a web component.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

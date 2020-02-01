@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>scripting on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/scripting/</link>
+    <description>Recent content in scripting on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 29 Jan 2020 15:07:59 +0100</lastBuildDate>
+    
+	<atom:link href="https://schoeffm.github.io/tags/scripting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>jq by example</title>
+      <link>https://schoeffm.github.io/posts/jq-by-example/</link>
+      <pubDate>Wed, 29 Jan 2020 15:07:59 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/jq-by-example/</guid>
+      <description>&lt;p&gt;Inspired by a &lt;a href=&#34;https://www.baeldung.com/linux/jq-command-json&#34;&gt;nice tutorial on Baeldung&lt;/a&gt; I&amp;rsquo;ve decided to write done some usual suspects when working with &lt;a href=&#34;https://stedolan.github.io/jq/manual/&#34;&gt;jq&lt;/a&gt;. Hence, this is more like a cheatsheet than a regular post.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
