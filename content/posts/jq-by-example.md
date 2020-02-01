@@ -5,7 +5,7 @@ tags = ["cli", "jq", "json", "tools", "scripting", "bash" ]
 +++
 
 Inspired by a [nice tutorial on Baeldung][baeldung] I've decided to write done some usual suspects when working with [jq][jq]. Hence, this is more like a cheatsheet than a regular post.
-
+<!--more-->
 For practitioners and interactive learners I also recommend the great [jq-play online editor][editor] where you can try [jq][jq] directly in the browser.
 
 For our examples below let's go with the followin' JSON-input (fetched from a micro-profile `/health`-endpoint).
