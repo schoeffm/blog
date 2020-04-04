@@ -1,0 +1,10 @@
+@startuml
+Client -> Server: POST
+Server --> Client: 401: Unauthorized\nWWW-Authenticate: NTLM
+
+Client -> Server: POST\nAuthorization: NTLM <type 1 msg>
+Server --> Client: 401: Unauthorized\nWWW-Authenticate: NTLM <type 2 msg>
+
+Client -> Server: POST\nAuthorization: NTLM <type 3 msg>
+Server --> Client: 200: Success
+@enduml
