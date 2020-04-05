@@ -2,7 +2,6 @@
 title = "Towards Flexible Metrics Using SimplyTimed"
 date = 2020-03-29T18:35:36+02:00
 tags = ["metrics", "prometheus", "promql", "microprofile", "quarkus", "grafana"]
-draft = true
 +++
 
 When [revision 2.3 of the microprofile metrics API][metrics-release] was release earlier this year it introduced a new metric type called __*Simple Timer*__. Granted, with a name like that it's easy to underestimate this new type - but don't get tricked by its unspectacular title. Turns out, most of the time (especially in my projects where we also make use of [Prometheus][prometheus]) it's a way better suited and more flexible metric than i.e. its older cousin __*Timer*__.
@@ -116,7 +115,7 @@ Oh and by the way, that value is not reproducable using __*Timer*__ (without stu
 
 ### Conclusion
 
-__*Simple Timer*__ isn't just a smaller, simpler version of __*Timer*__. In combination with Prometheus it can even be of more use than it's older brother since it allows us to aggregate values accross JVM-borders (IMHO not applicable to __*Timer*__) which is probably its greatest benefit.
+__*Simple Timer*__ isn't just a smaller, simpler version of __*Timer*__. In combination with Prometheus it can even be of more use than it's older brother since it allows us to aggregate values accross JVM-borders (IMHO not applicable to __*Timer*__ - although the result looks similar to the correct result) which is probably its greatest benefit.
 
 [metrics-release]:https://github.com/eclipse/microprofile-metrics/releases
 [spec-arch]:https://download.eclipse.org/microprofile/microprofile-metrics-2.3/microprofile-metrics-spec-2.3.html#meta-data-def
