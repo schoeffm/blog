@@ -13,7 +13,7 @@ In other words, let the test results act as a quality gate for either promoting 
 <meta property='og:site_name' content='Personal PasteBin'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='devops'><meta property='article:tag' content='taurus'><meta property='article:tag' content='jmeter'><meta property='article:tag' content='performance'><meta property='article:tag' content='loadtesting'><meta property='article:tag' content='testing'><meta property='article:tag' content='jenkins'><meta property='article:tag' content='ci/cd'><meta property='article:tag' content='pipelines'><meta property='article:published_time' content='2019-08-20T00:00:00&#43;02:00'/><meta property='article:modified_time' content='2019-08-14T10:41:28&#43;02:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.63.2" />
+<meta name="generator" content="Hugo 0.68.3" />
 
   <title>Using load-tests as quality gate in Jenkins pipelines • Personal PasteBin</title>
   <link rel='canonical' href='https://schoeffm.github.io/posts/integration-of-loadtests-within-jenkins-pipelines/'>
@@ -99,6 +99,8 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/fetch/' style='font-size:1.2em'>fetch</a>
       </li><li>
+        <a href='/tags/grafana/' style='font-size:1em'>grafana</a>
+      </li><li>
         <a href='/tags/jakartaee/' style='font-size:1.2em'>jakartaee</a>
       </li><li>
         <a href='/tags/java/' style='font-size:1em'>java</a>
@@ -121,7 +123,9 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/loadtesting/' style='font-size:1em'>loadtesting</a>
       </li><li>
-        <a href='/tags/microprofile/' style='font-size:1.2em'>microprofile</a>
+        <a href='/tags/metrics/' style='font-size:1em'>metrics</a>
+      </li><li>
+        <a href='/tags/microprofile/' style='font-size:1.4em'>microprofile</a>
       </li><li>
         <a href='/tags/mitmproxy/' style='font-size:1em'>mitmproxy</a>
       </li><li>
@@ -139,7 +143,13 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/pipelines/' style='font-size:1em'>pipelines</a>
       </li><li>
+        <a href='/tags/prometheus/' style='font-size:1em'>prometheus</a>
+      </li><li>
+        <a href='/tags/promql/' style='font-size:1em'>promql</a>
+      </li><li>
         <a href='/tags/proxy/' style='font-size:1em'>proxy</a>
+      </li><li>
+        <a href='/tags/quarkus/' style='font-size:1em'>quarkus</a>
       </li><li>
         <a href='/tags/rest/' style='font-size:1em'>rest</a>
       </li><li>
@@ -288,9 +298,9 @@ The reason why I started to have a closer look at Taurus was its ability to <em>
 To kill two birds with one stone we created a Docker(-Agent) Image to containerize Taurus (a starting-point for such an <a href="https://hub.docker.com/r/blazemeter/taurus">image is already provided by blazemeter</a>). That image can then be used <a href="https://jenkins.io/doc/pipeline/steps/docker-workflow/#withdockercontainer-run-build-steps-inside-a-docker-container">from within Jenkins</a> as well as locally on each dev machine. A corresponding pipeline-snippet might look like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">withDockerContainer<span style="color:#f92672">(</span>image: <span style="color:#e6db74">&#39;jenkins/taurus&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
     String propPrefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;modules.jmeter.properties&#34;</span>
-    withCredentials<span style="color:#f92672">(</span><span style="color:#f92672">[</span>usernamePassword<span style="color:#f92672">(</span>credentialsId: <span style="color:#e6db74">&#39;loadtest-user&#39;</span><span style="color:#f92672">,</span> 
+    withCredentials<span style="color:#f92672">([</span>usernamePassword<span style="color:#f92672">(</span>credentialsId: <span style="color:#e6db74">&#39;loadtest-user&#39;</span><span style="color:#f92672">,</span> 
                                       passwordVariable: <span style="color:#e6db74">&#39;apipass&#39;</span><span style="color:#f92672">,</span> 
-                                      usernameVariable: <span style="color:#e6db74">&#39;apiuser&#39;</span><span style="color:#f92672">)</span><span style="color:#f92672">]</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                                      usernameVariable: <span style="color:#e6db74">&#39;apiuser&#39;</span><span style="color:#f92672">)])</span> <span style="color:#f92672">{</span>
         sh  <span style="color:#e6db74">&#34;bzt -o ${propPrefix}.api_user=${apiuser}&#34;</span> <span style="color:#f92672">+</span>
             <span style="color:#e6db74">&#34;    -o ${propPrefix}.api_password=${apipass}&#34;</span> <span style="color:#f92672">+</span>
             <span style="color:#e6db74">&#34;    -o ${propPrefix}.api_users=10&#34;</span> <span style="color:#f92672">+</span>

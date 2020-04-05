@@ -6,10 +6,64 @@
     <description>Recent content in Tags on Personal PasteBin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Jan 2020 15:07:59 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2020 18:35:36 +0200</lastBuildDate>
     
 	<atom:link href="https://schoeffm.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>grafana</title>
+      <link>https://schoeffm.github.io/tags/grafana/</link>
+      <pubDate>Sun, 29 Mar 2020 18:35:36 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/grafana/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>metrics</title>
+      <link>https://schoeffm.github.io/tags/metrics/</link>
+      <pubDate>Sun, 29 Mar 2020 18:35:36 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/metrics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>microprofile</title>
+      <link>https://schoeffm.github.io/tags/microprofile/</link>
+      <pubDate>Sun, 29 Mar 2020 18:35:36 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/microprofile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prometheus</title>
+      <link>https://schoeffm.github.io/tags/prometheus/</link>
+      <pubDate>Sun, 29 Mar 2020 18:35:36 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/prometheus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>promql</title>
+      <link>https://schoeffm.github.io/tags/promql/</link>
+      <pubDate>Sun, 29 Mar 2020 18:35:36 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/promql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>quarkus</title>
+      <link>https://schoeffm.github.io/tags/quarkus/</link>
+      <pubDate>Sun, 29 Mar 2020 18:35:36 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/quarkus/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>bash</title>
@@ -219,15 +273,6 @@
     </item>
     
     <item>
-      <title>ci/cd</title>
-      <link>https://schoeffm.github.io/tags/ci/cd/</link>
-      <pubDate>Wed, 14 Aug 2019 10:41:28 +0200</pubDate>
-      
-      <guid>https://schoeffm.github.io/tags/ci/cd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>jenkins</title>
       <link>https://schoeffm.github.io/tags/jenkins/</link>
       <pubDate>Wed, 14 Aug 2019 10:41:28 +0200</pubDate>
@@ -372,15 +417,6 @@
     </item>
     
     <item>
-      <title>microprofile</title>
-      <link>https://schoeffm.github.io/tags/microprofile/</link>
-      <pubDate>Sat, 27 Jul 2019 11:18:59 +0200</pubDate>
-      
-      <guid>https://schoeffm.github.io/tags/microprofile/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>base64</title>
       <link>https://schoeffm.github.io/tags/base64/</link>
       <pubDate>Sat, 13 Jul 2019 14:58:39 +0200</pubDate>
@@ -431,6 +467,15 @@
       <pubDate>Mon, 10 Jun 2019 10:40:12 +0200</pubDate>
       
       <guid>https://schoeffm.github.io/tags/rest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ci/cd</title>
+      <link>https://schoeffm.github.io/tags/ci/cd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://schoeffm.github.io/tags/ci/cd/</guid>
       <description></description>
     </item>
     

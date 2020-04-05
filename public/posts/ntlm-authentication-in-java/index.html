@@ -13,7 +13,7 @@ Luckily, I finally stumbled upon the Authenticator-class in Java and learned tha
 <meta property='og:site_name' content='Personal PasteBin'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='java'><meta property='article:tag' content='security'><meta property='article:tag' content='ntlm'><meta property='article:tag' content='authentication'><meta property='article:published_time' content='2019-09-20T07:52:55&#43;02:00'/><meta property='article:modified_time' content='2019-09-20T07:52:55&#43;02:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.63.2" />
+<meta name="generator" content="Hugo 0.68.3" />
 
   <title>Ntlm Authentication in Java • Personal PasteBin</title>
   <link rel='canonical' href='https://schoeffm.github.io/posts/ntlm-authentication-in-java/'>
@@ -99,6 +99,8 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/fetch/' style='font-size:1.2em'>fetch</a>
       </li><li>
+        <a href='/tags/grafana/' style='font-size:1em'>grafana</a>
+      </li><li>
         <a href='/tags/jakartaee/' style='font-size:1.2em'>jakartaee</a>
       </li><li>
         <a href='/tags/java/' style='font-size:1em'>java</a>
@@ -121,7 +123,9 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/loadtesting/' style='font-size:1em'>loadtesting</a>
       </li><li>
-        <a href='/tags/microprofile/' style='font-size:1.2em'>microprofile</a>
+        <a href='/tags/metrics/' style='font-size:1em'>metrics</a>
+      </li><li>
+        <a href='/tags/microprofile/' style='font-size:1.4em'>microprofile</a>
       </li><li>
         <a href='/tags/mitmproxy/' style='font-size:1em'>mitmproxy</a>
       </li><li>
@@ -139,7 +143,13 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/pipelines/' style='font-size:1em'>pipelines</a>
       </li><li>
+        <a href='/tags/prometheus/' style='font-size:1em'>prometheus</a>
+      </li><li>
+        <a href='/tags/promql/' style='font-size:1em'>promql</a>
+      </li><li>
         <a href='/tags/proxy/' style='font-size:1em'>proxy</a>
+      </li><li>
+        <a href='/tags/quarkus/' style='font-size:1em'>quarkus</a>
       </li><li>
         <a href='/tags/rest/' style='font-size:1em'>rest</a>
       </li><li>
@@ -306,19 +316,19 @@ It&rsquo;s up to your implementation how it retrieves the credentials - it could
     String password<span style="color:#f92672">;</span>
     
     <span style="color:#a6e22e">@PostConstruct</span>
-    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initializeAuthenticator</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>        
-        Authenticator<span style="color:#f92672">.</span><span style="color:#a6e22e">setDefault</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> NtlmAuthenticator<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> password<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initializeAuthenticator</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>        
+        Authenticator<span style="color:#f92672">.</span><span style="color:#a6e22e">setDefault</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> NtlmAuthenticator<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> password<span style="color:#f92672">));</span>
     <span style="color:#f92672">}</span>
     
     <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NtlmAuthenticator</span> <span style="color:#66d9ef">extends</span> Authenticator <span style="color:#f92672">{</span>
         <span style="color:#66d9ef">private</span> PasswordAuthentication passwordAuthentication<span style="color:#f92672">;</span>
                 
         NtlmAuthenticator<span style="color:#f92672">(</span><span style="color:#66d9ef">final</span> String username<span style="color:#f92672">,</span> <span style="color:#66d9ef">final</span> String password<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">passwordAuthentication</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PasswordAuthentication<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> password<span style="color:#f92672">.</span><span style="color:#a6e22e">toCharArray</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">passwordAuthentication</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PasswordAuthentication<span style="color:#f92672">(</span>username<span style="color:#f92672">,</span> password<span style="color:#f92672">.</span><span style="color:#a6e22e">toCharArray</span><span style="color:#f92672">())</span>
         <span style="color:#f92672">}</span>
         
-        <span style="color:#66d9ef">protected</span> PasswordAuthentication <span style="color:#a6e22e">getPasswordAuthentication</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-            <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestingScheme</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">equalsIgnoreCase</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;NTLM&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span> 
+        <span style="color:#66d9ef">protected</span> PasswordAuthentication <span style="color:#a6e22e">getPasswordAuthentication</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getRequestingScheme</span><span style="color:#f92672">().</span><span style="color:#a6e22e">trim</span><span style="color:#f92672">().</span><span style="color:#a6e22e">equalsIgnoreCase</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;NTLM&#34;</span><span style="color:#f92672">))</span> 
                 <span style="color:#f92672">?</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">passwordAuthentication</span>
                 <span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span>
         <span style="color:#f92672">}</span>

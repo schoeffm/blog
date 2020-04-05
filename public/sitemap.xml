@@ -3,6 +3,56 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://schoeffm.github.io/tags/grafana/</loc>
+    <lastmod>2020-03-29T18:35:36+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schoeffm.github.io/tags/metrics/</loc>
+    <lastmod>2020-03-29T18:35:36+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schoeffm.github.io/tags/microprofile/</loc>
+    <lastmod>2020-03-29T18:35:36+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schoeffm.github.io/</loc>
+    <lastmod>2020-03-29T18:35:36+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schoeffm.github.io/posts/</loc>
+    <lastmod>2020-03-29T18:35:36+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schoeffm.github.io/tags/prometheus/</loc>
+    <lastmod>2020-03-29T18:35:36+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schoeffm.github.io/tags/promql/</loc>
+    <lastmod>2020-03-29T18:35:36+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schoeffm.github.io/tags/quarkus/</loc>
+    <lastmod>2020-03-29T18:35:36+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schoeffm.github.io/tags/</loc>
+    <lastmod>2020-03-29T18:35:36+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://schoeffm.github.io/posts/towards-flexible-metrics-using-simplytimed/</loc>
+    <lastmod>2020-03-29T18:35:36+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://schoeffm.github.io/tags/bash/</loc>
     <lastmod>2020-01-29T15:07:59+01:00</lastmod>
   </url>
@@ -28,22 +78,7 @@
   </url>
   
   <url>
-    <loc>https://schoeffm.github.io/</loc>
-    <lastmod>2020-01-29T15:07:59+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://schoeffm.github.io/posts/</loc>
-    <lastmod>2020-01-29T15:07:59+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://schoeffm.github.io/tags/scripting/</loc>
-    <lastmod>2020-01-29T15:07:59+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://schoeffm.github.io/tags/</loc>
     <lastmod>2020-01-29T15:07:59+01:00</lastmod>
   </url>
   
@@ -163,11 +198,6 @@
   </url>
   
   <url>
-    <loc>https://schoeffm.github.io/tags/ci/cd/</loc>
-    <lastmod>2019-08-14T10:41:28+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://schoeffm.github.io/tags/jenkins/</loc>
     <lastmod>2019-08-14T10:41:28+02:00</lastmod>
   </url>
@@ -278,11 +308,6 @@
   </url>
   
   <url>
-    <loc>https://schoeffm.github.io/tags/microprofile/</loc>
-    <lastmod>2019-07-27T11:18:59+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://schoeffm.github.io/posts/response-streaming-between-jaxrs-and-webcomponents-part1/</loc>
     <lastmod>2019-07-27T11:18:59+02:00</lastmod>
   </url>
@@ -338,6 +363,10 @@
   
   <url>
     <loc>https://schoeffm.github.io/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://schoeffm.github.io/tags/ci/cd/</loc>
   </url>
   
   <url>

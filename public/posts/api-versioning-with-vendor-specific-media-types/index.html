@@ -11,7 +11,7 @@
 <meta property='og:site_name' content='Personal PasteBin'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='jax-rs'><meta property='article:tag' content='jee'><meta property='article:tag' content='jakartaee'><meta property='article:tag' content='microprofile'><meta property='article:tag' content='rest'><meta property='article:published_time' content='2019-06-10T00:00:00&#43;02:00'/><meta property='article:modified_time' content='2019-06-10T10:40:12&#43;02:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.63.2" />
+<meta name="generator" content="Hugo 0.68.3" />
 
   <title>API versioning using vender specific media types in JAX-RS • Personal PasteBin</title>
   <link rel='canonical' href='https://schoeffm.github.io/posts/api-versioning-with-vendor-specific-media-types/'>
@@ -97,6 +97,8 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/fetch/' style='font-size:1.2em'>fetch</a>
       </li><li>
+        <a href='/tags/grafana/' style='font-size:1em'>grafana</a>
+      </li><li>
         <a href='/tags/jakartaee/' style='font-size:1.2em'>jakartaee</a>
       </li><li>
         <a href='/tags/java/' style='font-size:1em'>java</a>
@@ -119,7 +121,9 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/loadtesting/' style='font-size:1em'>loadtesting</a>
       </li><li>
-        <a href='/tags/microprofile/' style='font-size:1.2em'>microprofile</a>
+        <a href='/tags/metrics/' style='font-size:1em'>metrics</a>
+      </li><li>
+        <a href='/tags/microprofile/' style='font-size:1.4em'>microprofile</a>
       </li><li>
         <a href='/tags/mitmproxy/' style='font-size:1em'>mitmproxy</a>
       </li><li>
@@ -137,7 +141,13 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/pipelines/' style='font-size:1em'>pipelines</a>
       </li><li>
+        <a href='/tags/prometheus/' style='font-size:1em'>prometheus</a>
+      </li><li>
+        <a href='/tags/promql/' style='font-size:1em'>promql</a>
+      </li><li>
         <a href='/tags/proxy/' style='font-size:1em'>proxy</a>
+      </li><li>
+        <a href='/tags/quarkus/' style='font-size:1em'>quarkus</a>
       </li><li>
         <a href='/tags/rest/' style='font-size:1em'>rest</a>
       </li><li>
@@ -274,11 +284,11 @@ application/vnd.schoeffm+json</code></pre></div>
 <p>Therefore we&rsquo;ve modelled the version-information into the actual subtype-name (see <a href="https://github.com/schoeffm/jax-rs-conneg">this Github-repo</a>)
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@GET</span>
 <span style="color:#a6e22e">@Produces</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;application/vnd.schoeffm-v1+json&#34;</span><span style="color:#f92672">)</span>
-<span style="color:#66d9ef">public</span> Response <span style="color:#a6e22e">customersOld</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">return</span> Response<span style="color:#f92672">.</span><span style="color:#a6e22e">ok</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Version 1.0&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span> <span style="color:#f92672">}</span>
+<span style="color:#66d9ef">public</span> Response <span style="color:#a6e22e">customersOld</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">return</span> Response<span style="color:#f92672">.</span><span style="color:#a6e22e">ok</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Version 1.0&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span> <span style="color:#f92672">}</span>
 
 <span style="color:#a6e22e">@GET</span>
 <span style="color:#a6e22e">@Produces</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;application/vnd.schoeffm-v2+json&#34;</span><span style="color:#f92672">)</span>
-<span style="color:#66d9ef">public</span> Response <span style="color:#a6e22e">customersNew</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">return</span> Response<span style="color:#f92672">.</span><span style="color:#a6e22e">ok</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Version 2.0&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span> <span style="color:#f92672">}</span></code></pre></div></p>
+<span style="color:#66d9ef">public</span> Response <span style="color:#a6e22e">customersNew</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span> <span style="color:#66d9ef">return</span> Response<span style="color:#f92672">.</span><span style="color:#a6e22e">ok</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Version 2.0&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">();</span> <span style="color:#f92672">}</span></code></pre></div></p>
 <p>Which allows us to:</p>
 <ul>
 <li>have several versions of an API exposed at the same time</li>

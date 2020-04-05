@@ -11,7 +11,7 @@
 <meta property='og:site_name' content='Personal PasteBin'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='cli'><meta property='article:tag' content='jq'><meta property='article:tag' content='json'><meta property='article:tag' content='tools'><meta property='article:tag' content='scripting'><meta property='article:tag' content='bash'><meta property='article:published_time' content='2020-01-29T15:07:59&#43;01:00'/><meta property='article:modified_time' content='2020-01-29T15:07:59&#43;01:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.63.2" />
+<meta name="generator" content="Hugo 0.68.3" />
 
   <title>jq by example • Personal PasteBin</title>
   <link rel='canonical' href='https://schoeffm.github.io/posts/jq-by-example/'>
@@ -97,6 +97,8 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/fetch/' style='font-size:1.2em'>fetch</a>
       </li><li>
+        <a href='/tags/grafana/' style='font-size:1em'>grafana</a>
+      </li><li>
         <a href='/tags/jakartaee/' style='font-size:1.2em'>jakartaee</a>
       </li><li>
         <a href='/tags/java/' style='font-size:1em'>java</a>
@@ -119,7 +121,9 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/loadtesting/' style='font-size:1em'>loadtesting</a>
       </li><li>
-        <a href='/tags/microprofile/' style='font-size:1.2em'>microprofile</a>
+        <a href='/tags/metrics/' style='font-size:1em'>metrics</a>
+      </li><li>
+        <a href='/tags/microprofile/' style='font-size:1.4em'>microprofile</a>
       </li><li>
         <a href='/tags/mitmproxy/' style='font-size:1em'>mitmproxy</a>
       </li><li>
@@ -137,7 +141,13 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/pipelines/' style='font-size:1em'>pipelines</a>
       </li><li>
+        <a href='/tags/prometheus/' style='font-size:1em'>prometheus</a>
+      </li><li>
+        <a href='/tags/promql/' style='font-size:1em'>promql</a>
+      </li><li>
         <a href='/tags/proxy/' style='font-size:1em'>proxy</a>
+      </li><li>
+        <a href='/tags/quarkus/' style='font-size:1em'>quarkus</a>
       </li><li>
         <a href='/tags/rest/' style='font-size:1em'>rest</a>
       </li><li>
@@ -316,7 +326,7 @@ Finding/Selecting entries by value (using <code>==</code>, <code>&gt;=</code>, <
 <span style="color:#f92672">{</span>
     <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;core-postgres-isAlive&#34;</span>,
     <span style="color:#e6db74">&#34;state&#34;</span>: <span style="color:#e6db74">&#34;UP&#34;</span>,
-    <span style="color:#e6db74">&#34;data&#34;</span>: <span style="color:#f92672">{</span><span style="color:#f92672">}</span>
+    <span style="color:#e6db74">&#34;data&#34;</span>: <span style="color:#f92672">{}</span>
 <span style="color:#f92672">}</span></code></pre></div>
 If a prop contains special characters you have to quote the name:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&gt; jq <span style="color:#e6db74">&#39;.checks[] | select(.data.&#34;api-versions&#34;==&#34;2&#34;)&#39;</span> file.json
@@ -396,6 +406,16 @@ Use <code>add</code> in case you&rsquo;d like to sum things up - to convert type
 </svg>
  Previous</span>
         <span class='screen-reader-text'>Previous post: </span>Switching JAX-RS serializer in payara</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/posts/towards-flexible-metrics-using-simplytimed/'>
+        <span class='screen-reader-text'>Next post: </span>Towards Flexible Metrics Using SimplyTimed<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
     </div></div>
 </nav>
 

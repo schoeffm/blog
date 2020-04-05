@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>grafana on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/grafana/</link>
+    <description>Recent content in grafana on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 29 Mar 2020 18:35:36 +0200</lastBuildDate>
+    
+	<atom:link href="https://schoeffm.github.io/tags/grafana/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Towards Flexible Metrics Using SimplyTimed</title>
+      <link>https://schoeffm.github.io/posts/towards-flexible-metrics-using-simplytimed/</link>
+      <pubDate>Sun, 29 Mar 2020 18:35:36 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/towards-flexible-metrics-using-simplytimed/</guid>
+      <description>&lt;p&gt;When &lt;a href=&#34;https://github.com/eclipse/microprofile-metrics/releases&#34;&gt;revision 2.3 of the microprofile metrics API&lt;/a&gt; was release earlier this year it introduced a new metric type called &lt;strong&gt;&lt;em&gt;Simple Timer&lt;/em&gt;&lt;/strong&gt;. Granted, with a name like that it&amp;rsquo;s easy to underestimate this new type - but don&amp;rsquo;t get tricked by its unspectacular title. Turns out, most of the time (especially in my projects where we also make use of &lt;a href=&#34;https://prometheus.io/&#34;&gt;Prometheus&lt;/a&gt;) it&amp;rsquo;s a way better suited and more flexible metric than i.e. its older cousin &lt;strong&gt;&lt;em&gt;Timer&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

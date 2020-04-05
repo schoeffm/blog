@@ -13,7 +13,7 @@ Finally, I ended up with a setup where the app used a man-in-the-middle proxy fo
 <meta property='og:site_name' content='Personal PasteBin'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='mitmproxy'><meta property='article:tag' content='proxy'><meta property='article:tag' content='cli'><meta property='article:tag' content='devops'><meta property='article:tag' content='network'><meta property='article:tag' content='tools'><meta property='article:published_time' content='2019-09-19T16:27:21&#43;02:00'/><meta property='article:modified_time' content='2019-09-19T16:27:21&#43;02:00'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.63.2" />
+<meta name="generator" content="Hugo 0.68.3" />
 
   <title>Network Debugging of Containerized Java Apps • Personal PasteBin</title>
   <link rel='canonical' href='https://schoeffm.github.io/posts/network-debugging-of-containerized-java-apps/'>
@@ -99,6 +99,8 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/fetch/' style='font-size:1.2em'>fetch</a>
       </li><li>
+        <a href='/tags/grafana/' style='font-size:1em'>grafana</a>
+      </li><li>
         <a href='/tags/jakartaee/' style='font-size:1.2em'>jakartaee</a>
       </li><li>
         <a href='/tags/java/' style='font-size:1em'>java</a>
@@ -121,7 +123,9 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/loadtesting/' style='font-size:1em'>loadtesting</a>
       </li><li>
-        <a href='/tags/microprofile/' style='font-size:1.2em'>microprofile</a>
+        <a href='/tags/metrics/' style='font-size:1em'>metrics</a>
+      </li><li>
+        <a href='/tags/microprofile/' style='font-size:1.4em'>microprofile</a>
       </li><li>
         <a href='/tags/mitmproxy/' style='font-size:1em'>mitmproxy</a>
       </li><li>
@@ -139,7 +143,13 @@ gtag('config', 'UA-148436067-1');
       </li><li>
         <a href='/tags/pipelines/' style='font-size:1em'>pipelines</a>
       </li><li>
+        <a href='/tags/prometheus/' style='font-size:1em'>prometheus</a>
+      </li><li>
+        <a href='/tags/promql/' style='font-size:1em'>promql</a>
+      </li><li>
         <a href='/tags/proxy/' style='font-size:1em'>proxy</a>
+      </li><li>
+        <a href='/tags/quarkus/' style='font-size:1em'>quarkus</a>
       </li><li>
         <a href='/tags/rest/' style='font-size:1em'>rest</a>
       </li><li>
@@ -279,7 +289,7 @@ runs in docker       runs on localhost      runs anywhere
 Luckily, during installation <a href="https://docs.mitmproxy.org/stable/concepts-certificates/#ca-and-cert-files">mitm</a> will generate and place its certificates in a hidden folder in your home directory <code>$HOME/.mitmproxy</code>.</p>
 <p>To trust it you&rsquo;ll have to import this certificate into the JVMs cert-store. Since we use a <a href="https://hub.docker.com/r/payara/server-full">dockerized payara</a> we just create a custom <code>Dockerfile</code> and add that step to it:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> payara/server-full:5.192</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Import the SSL certificates of mitm</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> root</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> $HOME/.mitmproxy/mitmproxy-ca-cert.cer .<span style="color:#960050;background-color:#1e0010">
