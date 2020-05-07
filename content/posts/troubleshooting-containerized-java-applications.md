@@ -1,7 +1,6 @@
 +++
 title = "Troubleshooting Containerized Java Applications via JMX"
 date = 2020-05-02T13:18:06+02:00
-draft = true
 tags = ["java", "jmx", "flightrecorder", "missioncontrol", "zmc", "visualvm", "docker", "payara", "performance", "analysis" ]
 +++
 
