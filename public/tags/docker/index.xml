@@ -6,10 +6,20 @@
     <description>Recent content in docker on Personal PasteBin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 Jan 2020 12:00:56 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2020 13:18:06 +0200</lastBuildDate>
     
 	<atom:link href="https://schoeffm.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Troubleshooting Containerized Java Applications via JMX</title>
+      <link>https://schoeffm.github.io/posts/troubleshooting-containerized-java-applications/</link>
+      <pubDate>Sat, 02 May 2020 13:18:06 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/troubleshooting-containerized-java-applications/</guid>
+      <description>&lt;p&gt;When developing JEE applications these days we not only deploy &amp;lsquo;em as containerized apps but (at least in my teams) also use containers for local development.&lt;/p&gt;
+&lt;p&gt;One issue I was confronted with the other day was a performance bug with one of our apps. Back in the days I&amp;rsquo;d have just fired up &lt;a href=&#34;https://visualvm.github.io/&#34;&gt;VisualVM&lt;/a&gt; to connect to the local process causing trouble - but now, the process to attach to doesn&amp;rsquo;t run locally anymore.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Access Host From Inside a Docker Container</title>

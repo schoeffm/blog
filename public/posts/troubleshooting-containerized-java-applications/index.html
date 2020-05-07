@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='When developing JEE applications these days we not only deploy &lsquo;em as containerized apps but (at least in my teams) also use containers for local development.
+One issue I was confronted with the other day was a performance bug with one of our apps. Back in the days I&rsquo;d have just fired up VisualVM to connect to the local process causing trouble - but now, the process to attach to doesn&rsquo;t run locally anymore.'>
+<meta name='theme-color' content='#44ccff'>
+
+<meta property='og:title' content='Troubleshooting Containerized Java Applications via JMX • Personal PasteBin'>
+<meta property='og:description' content='When developing JEE applications these days we not only deploy &lsquo;em as containerized apps but (at least in my teams) also use containers for local development.
+One issue I was confronted with the other day was a performance bug with one of our apps. Back in the days I&rsquo;d have just fired up VisualVM to connect to the local process causing trouble - but now, the process to attach to doesn&rsquo;t run locally anymore.'>
+<meta property='og:url' content='https://schoeffm.github.io/posts/troubleshooting-containerized-java-applications/'>
+<meta property='og:site_name' content='Personal PasteBin'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='java'><meta property='article:tag' content='jmx'><meta property='article:tag' content='flightrecorder'><meta property='article:tag' content='missioncontrol'><meta property='article:tag' content='zmc'><meta property='article:tag' content='visualvm'><meta property='article:tag' content='docker'><meta property='article:tag' content='payara'><meta property='article:tag' content='performance'><meta property='article:tag' content='analysis'><meta property='article:published_time' content='2020-05-02T13:18:06&#43;02:00'/><meta property='article:modified_time' content='2020-05-02T13:18:06&#43;02:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.69.0" />
+
+  <title>Troubleshooting Containerized Java Applications via JMX • Personal PasteBin</title>
+  <link rel='canonical' href='https://schoeffm.github.io/posts/troubleshooting-containerized-java-applications/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.fb20af92.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#44ccff;}
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148436067-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-148436067-1');
+</script>
+
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/'>
+      Personal PasteBin
+      </a>
+    </h2>
+    <div class='desc'>
+    @schoeffm
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud no-shuffle'><li>
+        <a href='/tags/analysis/' style='font-size:1em'>analysis</a>
+      </li><li>
+        <a href='/tags/api/' style='font-size:1em'>api</a>
+      </li><li>
+        <a href='/tags/authentication/' style='font-size:1em'>authentication</a>
+      </li><li>
+        <a href='/tags/base64/' style='font-size:1em'>base64</a>
+      </li><li>
+        <a href='/tags/bash/' style='font-size:1em'>bash</a>
+      </li><li>
+        <a href='/tags/cheatsheet/' style='font-size:1.2em'>cheatsheet</a>
+      </li><li>
+        <a href='/tags/chunk/' style='font-size:1em'>chunk</a>
+      </li><li>
+        <a href='/tags/ci/cd/' style='font-size:1em'>ci/cd</a>
+      </li><li>
+        <a href='/tags/cli/' style='font-size:1.8em'>cli</a>
+      </li><li>
+        <a href='/tags/configuration/' style='font-size:1em'>configuration</a>
+      </li><li>
+        <a href='/tags/cors/' style='font-size:1em'>cors</a>
+      </li><li>
+        <a href='/tags/dev/' style='font-size:1em'>dev</a>
+      </li><li>
+        <a href='/tags/devops/' style='font-size:2em'>devops</a>
+      </li><li>
+        <a href='/tags/docker/' style='font-size:1.2em'>docker</a>
+      </li><li>
+        <a href='/tags/docker4mac/' style='font-size:1em'>docker4mac</a>
+      </li><li>
+        <a href='/tags/fetch/' style='font-size:1.2em'>fetch</a>
+      </li><li>
+        <a href='/tags/flightrecorder/' style='font-size:1em'>flightrecorder</a>
+      </li><li>
+        <a href='/tags/grafana/' style='font-size:1em'>grafana</a>
+      </li><li>
+        <a href='/tags/jakartaee/' style='font-size:1.2em'>jakartaee</a>
+      </li><li>
+        <a href='/tags/java/' style='font-size:1.2em'>java</a>
+      </li><li>
+        <a href='/tags/jax-rs/' style='font-size:1.4em'>jax-rs</a>
+      </li><li>
+        <a href='/tags/jee/' style='font-size:1.2em'>jee</a>
+      </li><li>
+        <a href='/tags/jenkins/' style='font-size:1em'>jenkins</a>
+      </li><li>
+        <a href='/tags/jmeter/' style='font-size:1em'>jmeter</a>
+      </li><li>
+        <a href='/tags/jmx/' style='font-size:1em'>jmx</a>
+      </li><li>
+        <a href='/tags/jq/' style='font-size:1em'>jq</a>
+      </li><li>
+        <a href='/tags/json/' style='font-size:1em'>json</a>
+      </li><li>
+        <a href='/tags/kubernetes/' style='font-size:1em'>kubernetes</a>
+      </li><li>
+        <a href='/tags/linux/' style='font-size:1.2em'>linux</a>
+      </li><li>
+        <a href='/tags/loadtesting/' style='font-size:1em'>loadtesting</a>
+      </li><li>
+        <a href='/tags/metrics/' style='font-size:1em'>metrics</a>
+      </li><li>
+        <a href='/tags/microprofile/' style='font-size:1.4em'>microprofile</a>
+      </li><li>
+        <a href='/tags/missioncontrol/' style='font-size:1em'>missioncontrol</a>
+      </li><li>
+        <a href='/tags/mitmproxy/' style='font-size:1em'>mitmproxy</a>
+      </li><li>
+        <a href='/tags/network/' style='font-size:1.2em'>network</a>
+      </li><li>
+        <a href='/tags/ntlm/' style='font-size:1em'>ntlm</a>
+      </li><li>
+        <a href='/tags/openshift/' style='font-size:1em'>openshift</a>
+      </li><li>
+        <a href='/tags/payara/' style='font-size:1.2em'>payara</a>
+      </li><li>
+        <a href='/tags/performance/' style='font-size:1.2em'>performance</a>
+      </li><li>
+        <a href='/tags/permissions/' style='font-size:1em'>permissions</a>
+      </li><li>
+        <a href='/tags/pipelines/' style='font-size:1em'>pipelines</a>
+      </li><li>
+        <a href='/tags/prometheus/' style='font-size:1em'>prometheus</a>
+      </li><li>
+        <a href='/tags/promql/' style='font-size:1em'>promql</a>
+      </li><li>
+        <a href='/tags/proxy/' style='font-size:1em'>proxy</a>
+      </li><li>
+        <a href='/tags/quarkus/' style='font-size:1em'>quarkus</a>
+      </li><li>
+        <a href='/tags/rest/' style='font-size:1em'>rest</a>
+      </li><li>
+        <a href='/tags/scripting/' style='font-size:1em'>scripting</a>
+      </li><li>
+        <a href='/tags/security/' style='font-size:1em'>security</a>
+      </li><li>
+        <a href='/tags/ssh/' style='font-size:1em'>ssh</a>
+      </li><li>
+        <a href='/tags/streaming/' style='font-size:1.2em'>streaming</a>
+      </li><li>
+        <a href='/tags/taurus/' style='font-size:1em'>taurus</a>
+      </li><li>
+        <a href='/tags/tcpdump/' style='font-size:1em'>tcpdump</a>
+      </li><li>
+        <a href='/tags/testing/' style='font-size:1.2em'>testing</a>
+      </li><li>
+        <a href='/tags/tools/' style='font-size:1.4em'>tools</a>
+      </li><li>
+        <a href='/tags/users/' style='font-size:1em'>users</a>
+      </li><li>
+        <a href='/tags/visualvm/' style='font-size:1em'>visualvm</a>
+      </li><li>
+        <a href='/tags/web-components/' style='font-size:1.4em'>web-components</a>
+      </li><li>
+        <a href='/tags/zmc/' style='font-size:1em'>zmc</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='' class="">
+          <span></span>
+        </a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/'>Personal PasteBin</a></li><li><a href='/posts/'>Posts</a></li><li><span>Troubleshooting Containerized Java Applications via JMX</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Personal PasteBin</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Troubleshooting Containerized Java Applications via JMX</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2020-05-02T13:18:06&#43;02:00'>2020, May 02</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+6 mins read
+</span>
+
+
+  
+  
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>When developing JEE applications these days we not only deploy &lsquo;em as containerized apps but (at least in my teams) also use containers for local development.</p>
+<p>One issue I was confronted with the other day was a performance bug with one of our apps. Back in the days I&rsquo;d have just fired up <a href="https://visualvm.github.io/">VisualVM</a> to connect to the local process causing trouble - but now, the process to attach to doesn&rsquo;t run locally anymore.</p>
+<h2 id="jmx-pre-requisite">JMX pre-requisite</h2>
+<p>At the end of the day the solution is pretty simple - just treat the containerized process as an external app (i.e. like an app that was deployed on a remote server) and connect to it via JMX. Unfortunately, this can become quite tricky.</p>
+<ol>
+<li>
+<p><strong>Turn on JMX</strong>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-Dcom.sun.management.jmxremote 
+-Dcom.sun.management.jmxremote.port<span style="color:#f92672">=</span><span style="color:#ae81ff">9090</span>
+-Dcom.sun.management.jmxremote.rmi.port<span style="color:#f92672">=</span><span style="color:#ae81ff">9090</span></code></pre></div>
+This activates JMX and binds the JMX-server to port 9090 (<a href="https://stackoverflow.com/questions/20884353/why-java-opens-3-ports-when-jmx-is-configured#answer-21552812">why you need to repeat the ports</a>)</p>
+</li>
+<li>
+<p><strong>Turn off authentication and transport-layer security</strong>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-Dcom.sun.management.jmxremote.ssl<span style="color:#f92672">=</span>false 
+-Dcom.sun.management.jmxremote.authenticate<span style="color:#f92672">=</span>false </code></pre></div>
+You should think twice before you turn off those security features. It&rsquo;s way easier to set things up this way at the expense of security of course. IMHO for my use-cases the threat is negligible:</p>
+<ul>
+<li>use JMX locally for debugging purposes</li>
+<li>use it within a kubernetes setup where I forward that port to my local machine and don&rsquo;t expose the JMX server to others (more on that later).</li>
+</ul>
+<p>Anyways, you have to make that decision yourself in the context of your project.</p>
+</li>
+<li>
+<p><strong>Setting up the IP/Host</strong>: This is the tricky part and has <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/management/faq.html#linux1">sth. to do with JMX on linux</a> (which your container is most probably running). When you execute <code>hostname -i</code> within your container it&rsquo;ll resolve to an IP-address not know to/resolvable by the outside world.<!-- raw HTML omitted --> I found two solutions to this issue:</p>
+<ol>
+<li>setting the JMX-host explicitly
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-Djava.rmi.server.hostname<span style="color:#f92672">=</span>&lt;CONTAINER_IP&gt;</code></pre></div>
+<code>CONTAINER_IP</code> has to be the external IP-address assigned to the container. So for your local docker environment this would be the hosts address (sth. like <code>192.168.178.33</code>).<!-- raw HTML omitted --> This approach though is less portable since all of your collegues will have to change that address to match their enviornment.</li>
+<li>setting the hostname via <code>docker</code>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -ti --hostname localhost payara/server-full</code></pre></div>
+When starting your container (either via <code>docker-compose</code> or plain <code>docker</code>) you can pass in the hostname the container should have. If you turn that to <code>localhost</code> the container will resolve its hostname to:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">payara@localhost:~$ hostname -i
+127.0.0.1 172.26.0.4 ::1</code></pre></div></li>
+</ol>
+</li>
+</ol>
+<p>Lets take all this toghether and start a <code>payara/server-full</code> container with active JMX:</p>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -ti <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -e JVM_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-Dcom.sun.management.jmxremote.port=9090 -Dcom.sun.management.jmxremote.rmi.port=9090 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --hostname localhost <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p 9090:9090 -p 8080:8080 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    payara/server-full</code></pre></div>
+or you set the JMX-host explicitly (assuming your machines IP is <code>192.168.178.22</code>):
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -ti <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -e JVM_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-Djava.rmi.server.hostname=192.168.178.22 -Dcom.sun.management.jmxremote.port=9090 -Dcom.sun.management.jmxremote.rmi.port=9090 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p 9090:9090 -p 8080:8080 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    payara/server-full</code></pre></div></p>
+<p>In both cases you&rsquo;d be able to connect to your containerized app via:
+<figure>
+    <img src="/posts/troubleshooting-containerized-java-applications/jconsole.png"
+         alt="jconsole" width="60%"/> 
+</figure>
+</p>
+<h3 id="connecting-to-pods-running-on-k8s-or-openshift">Connecting to pods running on k8s or openshift</h3>
+<p>So far we just looked at how to connect to a container running in your local docker-host. But when dealing with JMX (and the capabilities waiting beyond, like FlightRecorder and MissionControl) it&rsquo;s maybe even more interesting to connect to productive applications running in a kubernetes-ish orchestrator (nothing else seems to be relevant anyways).</p>
+<p>Assuming you&rsquo;ve setup the container within the pod to start a JMX-server that binds to <code>127.0.0.1:9090</code> (using the means from above) you could forward that port to your local machine with:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl port-forward &lt;POD-NAME&gt; 9090:9090</code></pre></div></p>
+<p>Subsequently, you&rsquo;re again able to connect to <code>localhost:9090</code> using JConsole or VisualVM exploring information about the remote container.</p>
+<h2 id="leverage-tools-now">Leverage tools now</h2>
+<h3 id="jconsole">JConsole</h3>
+<p>To test the setup just start your container, add a port-mapping for the JMX-port
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -ti <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -e JVM_ARGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-Dcom.sun.management.jmxremote.port=9090 -Dcom.sun.management.jmxremote.rmi.port=9090 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --hostname localhost <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p 9090:9090 -p 8080:8080 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    payara/server-full</code></pre></div></p>
+<p>and use i.e. <code>&lt;JDK&gt;/bin/jconsole</code> (which is most probably still part of your JDK-installation) to connect to the respective JMX-socket on <code>localhost:9090</code> (<em>confirm any security warnings</em>).</p>
+<figure>
+    <img src="/posts/troubleshooting-containerized-java-applications/jconsole.png"
+         alt="jconsole" width="60%"/> 
+</figure>
+
+<h3 id="visualvm">VisualVM</h3>
+<p><code>jconsole</code> is nice, but the aforementioned <a href="https://visualvm.github.io/">VisualVM</a> is able to give us deeper insights.</p>
+<p>Unless you&rsquo;re using <a href="https://www.graalvm.org/">GraalVM</a>, your JDK either doesn&rsquo;t contain VisualVM anymore or it contains an ancient version. It was shipped as <a href="https://visualvm.github.io/javavisualvm.html">part of Oracle JDK until version 8</a> but was discontinued and is <a href="https://visualvm.github.io/">distributed now as independent tool</a>. Since I use <a href="https://sdkman.io/">sdkman</a> to manage parallel JDK-installations I incidentally already had a GraalVM installation which included VisualVM.</p>
+<p>If that is not the case you can <a href="https://visualvm.github.io/">download VisualVM</a> as a separate tool or check your package manager (like <code>brew cask install visualvm</code>).</p>
+<ul>
+<li><strong>VisualVM of GraalVM</strong>: here it was enough to just start the app from within the <code>bin</code>-directory: <code>&lt;GRAAL_HOME&gt;/bin/jvisualvm</code></li>
+<li><strong>dedicated VisualVM</strong>: since I still had an ancient Mac-Installation of JDK I explicitly had to point it to the correct JDK: <code>/Applications/VisualVM.app/Contents/MacOS/visualvm --jdkhome ~/.sdkman/candidates/java/14.0.1-zulu</code></li>
+</ul>
+<p>Via <em>Add JMX Connection</em> you can then connect using <code>localhost:9090</code> to your containerized app again:</p>
+<figure>
+    <img src="/posts/troubleshooting-containerized-java-applications/visualvm.png"
+         alt="VisualVM" width="100%"/> 
+</figure>
+
+<p>In contrast to JConsole, VisualVM offers a CPU- and Memory-Sampling Profiler which is very useful to identify bottlenecks and general performance hotspots.</p>
+<h3 id="using-missioncontrol-and-flightrecorder">Using MissionControl and FlightRecorder</h3>
+<p>Although using <a href="https://visualvm.github.io/">VisualVM</a> most of the time is enough to pinpoint (simple) performance issues I was curious about the integration with <a href="https://www.oracle.com/technetwork/java/javaseproducts/mission-control/index.html">MissionControl and FlightRecorder</a>.</p>
+<blockquote>
+<p>Java Flight Recorder is a profiling and event collection framework [&hellip;] Mission Control is an advanced set of tools
+that enables efficient and detailed analysis of the extensive data collected by Java Flight Recorder.</p>
+</blockquote>
+<p>The tools are conceived to impose as little overhead to a running application as possible and thus can even be used in production environments - well, and were a <a href="https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/about.htm#JFRRT107">commercial feature hence</a>.</p>
+<p>Things have changed though and starting <a href="https://wiki.openjdk.java.net/display/jmc/JMC+FAQ">from Oracle JDK 11 on</a> FlightRecorder was (along with the actual JDK) open-sourced. Additionally, the guys from <a href="https://www.azul.com/">Azul</a> backported that feature also to their <a href="https://www.azul.com/products/zulu-mission-control/">JDK 8 offering</a> (even for the community build).</p>
+<blockquote>
+<p>&hellip; you can use Zulu Mission Control on Zulu Enterprise, Zing, and Zulu Community builds of OpenJDK &hellip;</p>
+</blockquote>
+<p>Since in our examples we used <code>payara/server-full</code> which is based on <code>azul/zulu-openjdk</code> we&rsquo;re able to leverage that tools. So, let&rsquo;s <a href="https://www.azul.com/products/zulu-mission-control/">download and unpack ZMC (Zulu Mission Control)</a>.</p>
+<p>Just like VisualVM also ZMC had an issue with may ancient Mac-Java - so I had to explicitly point it to a JDK to be used. For that, find the <code>zmc.ini</code>-file (for Mac this is <code>&lt;APP-FOLDER&gt;/Contents/Eclipse/zmc.ini</code>) and add the <code>-vm</code> option:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-vm
+/Users/schoeffm/.sdkman/candidates/java/14.0.1-zulu/bin</code></pre></div>
+<p>After that, start the tool, connect it via JMX to the running, containerized process and have look around</p>
+<figure>
+    <img src="/posts/troubleshooting-containerized-java-applications/zmc.png"
+         alt="Zulu Mission Control" width="100%"/> 
+</figure>
+
+<p>For Zulu-JDK you don&rsquo;t even have to set <code>-XX:+FlightRecorder</code> anymore to activate the feature since it&rsquo;s activated by default already. But when working with an application server there are still some JVM-options worth changing/setting to get better results.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-XX:FlightRecorderOptions<span style="color:#f92672">=</span>stackdepth<span style="color:#f92672">=</span><span style="color:#ae81ff">2048</span>
+-XX:+UnlockDiagnosticVMOptions
+-XX:+DebugNonSafepoints</code></pre></div>
+<p><code>FlightRecorderOptions</code> increases the stackdepth that gets recorded (otherwise stack traces would be truncated) and <code>DebugNonSafepoints</code> (which has to be combined with <code>UnlockDiagnosticVMOptions</code>) improves fidelity as explained <a href="https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/about.htm#JFRRT111">here</a>.</p>
+<p>You could even start a continous recording that will be started along with the process and that stores its information in a ring-buffer waiting happily for being dumped and analyzed on demand by adding:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-XX:StartFlightRecording<span style="color:#f92672">=</span>disk<span style="color:#f92672">=</span>true,name<span style="color:#f92672">=</span>core,dumponexit<span style="color:#f92672">=</span>true,maxage<span style="color:#f92672">=</span>3h,settings<span style="color:#f92672">=</span>profile </code></pre></div>
+<p>To get more information about ZMC and its background have a look at <a href="https://www.azul.com/presentation/azul-webinar-open-source-flight-recorder-and-mission-control-managing-and-measuring-openjdk-8-performance/">this webinar recording</a>.</p>
+<p>Happy troubleshooting!</p>
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/java/'>java</a>, <a class='tag' href='/tags/jmx/'>jmx</a>, <a class='tag' href='/tags/flightrecorder/'>flightrecorder</a>, <a class='tag' href='/tags/missioncontrol/'>missioncontrol</a>, <a class='tag' href='/tags/zmc/'>zmc</a>, <a class='tag' href='/tags/visualvm/'>visualvm</a>, <a class='tag' href='/tags/docker/'>docker</a>, <a class='tag' href='/tags/payara/'>payara</a>, <a class='tag' href='/tags/performance/'>performance</a>, <a class='tag' href='/tags/analysis/'>analysis</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/towards-flexible-metrics-using-simplytimed/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Towards Flexible Metrics Using SimplyTimed</a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><div class='copyright'>
+  <p> &copy; 2019-2020 schoeffm </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src ="/assets/js/"</script>
+
+<script src='https://schoeffm.github.io/assets/js/main.9e5c4cf4.js'></script><script src='/js/custom.js'></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
