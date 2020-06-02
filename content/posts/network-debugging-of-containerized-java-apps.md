@@ -71,8 +71,39 @@ Which can then be loaded later on for further analysis
 {{< highlight bash >}}
 mitmproxy -r mitm.log
 {{< /highlight >}}
+
+---
+
+### Update 02.06.2020 - Replace Response
+I had to extend that setup the other day by replacing the response for a certain resource with a static, pre-defined reply. `mitmproxy` allows to execute python-scripts while handling flows - using those scripts one is able to manipulate the respective flow. 
+
+The followin' script for example is looking for a request containing the string `getFilteredBookings` in its URL and once found it'll responde to that request with a static reply defined in `trimmed_output.json`.
+
+{{< highlight bash >}}
+from mitmproxy import http
+
+def request(flow: http.HTTPFlow) -> None:
+
+    if "getFilteredBookings" in flow.request.pretty_url:
+        with open('trimmed_output.json', 'r') as file:
+            data = file.read().replace('\n', '')
+            flow.response = http.HTTPResponse.make(
+                200,  # status-code
+                data, # body
+                {"Content-Type": "application/json", "X-schoeffm":"intercepted"}  # headers
+            )
+{{< /highlight >}}
+
+Using the `--script`-option (applicable several times) you can then pass your `replyWithTrimmedBookings.py`-script to `mitmproxy`.
+
+{{< highlight bash >}}
+mitmproxy --listen-port 1080 --script replyWithTrimmedBookings.py 
+{{< /highlight >}}
+
+This approach allowed me to prototype an API change without even touching a single line of code. Further examples (of different complexity) for useful scripts can be found in the [mitmproxy documentations][mitm-docs].
     
 [mitm]:https://mitmproxy.org
 [mitm-certs]:https://docs.mitmproxy.org/stable/concepts-certificates/#ca-and-cert-files
 [payara-image]:https://hub.docker.com/r/payara/server-full
 [docker-localhost]:https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach/24326540#24326540
+[mitm-docs]:https://docs.mitmproxy.org/stable/addons-examples/
