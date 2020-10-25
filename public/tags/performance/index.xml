@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>performance on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/performance/</link>
+    <description>Recent content in performance on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 02 May 2020 13:18:06 +0200</lastBuildDate><atom:link href="https://schoeffm.github.io/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Troubleshooting Containerized Java Applications via JMX</title>
+      <link>https://schoeffm.github.io/posts/troubleshooting-containerized-java-applications/</link>
+      <pubDate>Sat, 02 May 2020 13:18:06 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/troubleshooting-containerized-java-applications/</guid>
+      <description>&lt;p&gt;When developing JEE applications these days we not only deploy &amp;lsquo;em as containerized apps but (at least in my teams) also use containers for local development.&lt;/p&gt;
+&lt;p&gt;One issue I was confronted with the other day was a performance bug with one of our apps. Back in the days I&amp;rsquo;d have just fired up &lt;a href=&#34;https://visualvm.github.io/&#34;&gt;VisualVM&lt;/a&gt; to connect to the local process causing trouble - but now, the process to attach to doesn&amp;rsquo;t run locally anymore.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using load-tests as quality gate in Jenkins pipelines</title>
+      <link>https://schoeffm.github.io/posts/integration-of-loadtests-within-jenkins-pipelines/</link>
+      <pubDate>Wed, 14 Aug 2019 10:41:28 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/integration-of-loadtests-within-jenkins-pipelines/</guid>
+      <description>&lt;p&gt;Over years &lt;a href=&#34;https://jmeter.apache.org/&#34;&gt;JMeter&lt;/a&gt; has always been a valuable tool in my box when dealing with performance testing. But when we&amp;rsquo;ve integrated those tests with our CI/CD-pipeline we always had hard times to control the pipeline outcome based on the performance results. &lt;!-- raw HTML omitted --&gt;
+In other words, let the test results act as a quality gate for either promoting the build-artfiact along the pipeline or not.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

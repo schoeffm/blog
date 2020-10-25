@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>payara on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/payara/</link>
+    <description>Recent content in payara on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 07 May 2020 20:41:26 +0200</lastBuildDate><atom:link href="https://schoeffm.github.io/tags/payara/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JSON-Log Parsing With stern and jq</title>
+      <link>https://schoeffm.github.io/posts/json-log-parsing-with-stern-and-jq/</link>
+      <pubDate>Thu, 07 May 2020 20:41:26 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/json-log-parsing-with-stern-and-jq/</guid>
+      <description>&lt;p&gt;In many projects we use JSON as log format since it inheritly bears structure and thus is easy to process by log-aggregators (i.e. &lt;a href=&#34;https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html&#34;&gt;AWS CloudWatch&lt;/a&gt; autom. discovers fields from json just like &lt;a href=&#34;https://www.fluentd.org/centralized_application_logging&#34;&gt;fluentd&lt;/a&gt;).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Troubleshooting Containerized Java Applications via JMX</title>
+      <link>https://schoeffm.github.io/posts/troubleshooting-containerized-java-applications/</link>
+      <pubDate>Sat, 02 May 2020 13:18:06 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/troubleshooting-containerized-java-applications/</guid>
+      <description>&lt;p&gt;When developing JEE applications these days we not only deploy &amp;lsquo;em as containerized apps but (at least in my teams) also use containers for local development.&lt;/p&gt;
+&lt;p&gt;One issue I was confronted with the other day was a performance bug with one of our apps. Back in the days I&amp;rsquo;d have just fired up &lt;a href=&#34;https://visualvm.github.io/&#34;&gt;VisualVM&lt;/a&gt; to connect to the local process causing trouble - but now, the process to attach to doesn&amp;rsquo;t run locally anymore.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Switching JAX-RS serializer in payara</title>
+      <link>https://schoeffm.github.io/posts/switching-jaxrs-serializer-in-payara/</link>
+      <pubDate>Thu, 16 Jan 2020 09:00:36 +0100</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/switching-jaxrs-serializer-in-payara/</guid>
+      <description>When working with Payara I stumble every once in a while over JSON-serialization issues. Payara v4 uses MOXy as default provider while Payara v5 comes with JsonB-support which apparently makes use of Yasson.
+Although, after moving from v4 to v5 I&amp;rsquo;m fine with the JsonB-default it may still be useful to use Jackson as JSON provider instead of the default one (to be honest, many things just worked out-of-the-box with Jackson like reflective access to props (no extra getter necessary) or support for Maps etc.</description>
+    </item>
+    
+  </channel>
+</rss>

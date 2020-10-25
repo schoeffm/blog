@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ci/cd on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/ci/cd/</link>
+    <description>Recent content in ci/cd on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://schoeffm.github.io/tags/ci/cd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using load-tests as quality gate in Jenkins pipelines</title>
+      <link>https://schoeffm.github.io/posts/integration-of-loadtests-within-jenkins-pipelines/</link>
+      <pubDate>Wed, 14 Aug 2019 10:41:28 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/integration-of-loadtests-within-jenkins-pipelines/</guid>
+      <description>&lt;p&gt;Over years &lt;a href=&#34;https://jmeter.apache.org/&#34;&gt;JMeter&lt;/a&gt; has always been a valuable tool in my box when dealing with performance testing. But when we&amp;rsquo;ve integrated those tests with our CI/CD-pipeline we always had hard times to control the pipeline outcome based on the performance results. &lt;!-- raw HTML omitted --&gt;
+In other words, let the test results act as a quality gate for either promoting the build-artfiact along the pipeline or not.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

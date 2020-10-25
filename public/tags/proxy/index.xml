@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>proxy on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/proxy/</link>
+    <description>Recent content in proxy on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 19 Sep 2019 16:27:21 +0200</lastBuildDate><atom:link href="https://schoeffm.github.io/tags/proxy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Network Debugging of Containerized Java Apps</title>
+      <link>https://schoeffm.github.io/posts/network-debugging-of-containerized-java-apps/</link>
+      <pubDate>Thu, 19 Sep 2019 16:27:21 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/network-debugging-of-containerized-java-apps/</guid>
+      <description>&lt;p&gt;The other day, I had the need to look closer into the network communication of a (dockerized) JEE application. My usual &lt;a href=&#34;https://schoeffm.github.io/posts/tcpdump-common-commands/&#34;&gt;tcpdump approach&lt;/a&gt; wasn&amp;rsquo;t applicable though because the traffic was TLS-encrypted.&lt;!-- raw HTML omitted --&gt;
+Finally, I ended up with a setup where the app used a &lt;a href=&#34;https://mitmproxy.org&#34;&gt;man-in-the-middle proxy&lt;/a&gt; for all its communication - that proxy transparently re-encrypted the traffic which gave me the chance to inspect every single message exchanged.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

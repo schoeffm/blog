@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web-components on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/web-components/</link>
+    <description>Recent content in web-components on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 30 Aug 2019 15:33:13 +0200</lastBuildDate><atom:link href="https://schoeffm.github.io/tags/web-components/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cors by Example</title>
+      <link>https://schoeffm.github.io/posts/cors-by-example/</link>
+      <pubDate>Fri, 30 Aug 2019 15:33:13 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/cors-by-example/</guid>
+      <description>More often than not CORS mean little more to developers than just getting rid of the infamous browser error in order to continue cranking out features as soon as possible. In other words, it&amp;rsquo;s not the best understood concept out there.
+Hence, to shed more light upon the topic, I&amp;rsquo;d like to give some working examples of CORS setups and show why they work. The more detailed explanation about the backing concepts I relinquish to the excellent MDN documentation if you&amp;rsquo;d like to dig deeper.</description>
+    </item>
+    
+    <item>
+      <title>Testing Web Components</title>
+      <link>https://schoeffm.github.io/posts/testing-web-components/</link>
+      <pubDate>Fri, 02 Aug 2019 08:14:21 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/testing-web-components/</guid>
+      <description>&lt;p&gt;Testing web-components in isolation can be a challenging task. The (&lt;em&gt;current&lt;/em&gt;) usual suspects in this area still &lt;a href=&#34;https://github.com/jsdom/jsdom/issues/1030&#34;&gt;lack support for the standard&lt;/a&gt; and thus cannot be used (at least at the time of this writing). Also, the web is swamped by posts about frameworks and thus finding good example projects or tutorials is also challenging.&lt;!-- raw HTML omitted --&gt;
+Finally, we found, at least for our project, a good solution which does the job and whose setup I&amp;rsquo;d like to write down/preserve (find the &lt;a href=&#34;https://github.com/schoeffm/testing-web-components&#34;&gt;corrsponding code in this repo&lt;/a&gt;).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Response streaming between JAX-RS and Web-Components (Part 2)</title>
+      <link>https://schoeffm.github.io/posts/response-streaming-between-jaxrs-and-webcomponents-part2/</link>
+      <pubDate>Sun, 28 Jul 2019 12:18:59 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/response-streaming-between-jaxrs-and-webcomponents-part2/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://schoeffm.github.io/posts/response-streaming-between-jaxrs-and-webcomponents-part1/&#34;&gt;part one&lt;/a&gt; we had a look at a JAX-RS endpoint that streams its content to the requesting client. Now I&amp;rsquo;d like to show how the &lt;code&gt;fetch&lt;/code&gt;-API can be used to consume that streamed content in a web component.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

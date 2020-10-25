@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kubernetes on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/kubernetes/</link>
+    <description>Recent content in kubernetes on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 13 Jul 2019 14:58:39 +0200</lastBuildDate><atom:link href="https://schoeffm.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Easy en-/decoding using base64</title>
+      <link>https://schoeffm.github.io/posts/easy-en-decoding-using-base64/</link>
+      <pubDate>Sat, 13 Jul 2019 14:58:39 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/easy-en-decoding-using-base64/</guid>
+      <description>&lt;p&gt;When dealing with &lt;a href=&#34;https://kubernetes.io/docs/concepts/configuration/secret/&#34;&gt;Kubernetes secrets&lt;/a&gt; or when testing REST-services using i.e. &lt;code&gt;curl&lt;/code&gt; it&amp;rsquo;s nice to have a fast&amp;rsquo;n&amp;rsquo;easy way of de- and encoding characters using &lt;a href=&#34;https://de.wikipedia.org/wiki/Base64&#34;&gt;base64&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

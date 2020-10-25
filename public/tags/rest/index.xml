@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rest on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/rest/</link>
+    <description>Recent content in rest on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 10 Jun 2019 10:40:12 +0200</lastBuildDate><atom:link href="https://schoeffm.github.io/tags/rest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>API versioning using vender specific media types in JAX-RS</title>
+      <link>https://schoeffm.github.io/posts/api-versioning-with-vendor-specific-media-types/</link>
+      <pubDate>Mon, 10 Jun 2019 10:40:12 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/api-versioning-with-vendor-specific-media-types/</guid>
+      <description>&lt;p&gt;Content Negotiation in JAX-RS allows you to leverage the information in the client requests &lt;code&gt;Accept&lt;/code&gt; header to map that request to a specific handler-method within your application. In combination with vendor-specific media types this approach can be used for &lt;a href=&#34;http://blog.steveklabnik.com/posts/2011-07-03-nobody-understands-rest-or-http&#34;&gt;versioning of an API&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

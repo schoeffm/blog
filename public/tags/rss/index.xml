@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rss on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/rss/</link>
+    <description>Recent content in rss on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 25 Oct 2020 07:52:55 +0200</lastBuildDate><atom:link href="https://schoeffm.github.io/tags/rss/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Leverage Huffduffer from mobile safari (again)</title>
+      <link>https://schoeffm.github.io/posts/push-audio-files-from-mobile-safari-to-huffduffer-again/</link>
+      <pubDate>Sun, 25 Oct 2020 07:52:55 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/push-audio-files-from-mobile-safari-to-huffduffer-again/</guid>
+      <description>&lt;p&gt;Swiping through my timeline it sometimes happens that I stumble upon a podcast episode that sounds especially interesting. The issue is, I don&amp;rsquo;t necessarily wanna subscribe to the full thing but only &amp;rsquo;d like to listen to that specific episode.&lt;/p&gt;
+&lt;p&gt;While this issue is a solved problem in general (&lt;em&gt;thanks to an awesome service called &lt;a href=&#34;https://huffduffer.com&#34;&gt;Huffduffer&lt;/a&gt;&lt;/em&gt;) it lately became an issue again on my mobile phone (&lt;em&gt;where I tend to consume my timeline&lt;/em&gt;) since my beloved &lt;a href=&#34;https://jancbeck.com/articles/huffduff-safari&#34;&gt;huffduffer-workflow&lt;/a&gt; stopped working and the all-new &lt;a href=&#34;https://support.apple.com/de-de/guide/shortcuts/welcome/ios&#34;&gt;shortcuts&lt;/a&gt;-app &amp;hellip; well, it felt clunky already &lt;a href=&#34;https://discussions.apple.com/thread/251084795&#34;&gt;and over time got even worse&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

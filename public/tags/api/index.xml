@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>api on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/api/</link>
+    <description>Recent content in api on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 30 Aug 2019 15:33:13 +0200</lastBuildDate><atom:link href="https://schoeffm.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cors by Example</title>
+      <link>https://schoeffm.github.io/posts/cors-by-example/</link>
+      <pubDate>Fri, 30 Aug 2019 15:33:13 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/cors-by-example/</guid>
+      <description>More often than not CORS mean little more to developers than just getting rid of the infamous browser error in order to continue cranking out features as soon as possible. In other words, it&amp;rsquo;s not the best understood concept out there.
+Hence, to shed more light upon the topic, I&amp;rsquo;d like to give some working examples of CORS setups and show why they work. The more detailed explanation about the backing concepts I relinquish to the excellent MDN documentation if you&amp;rsquo;d like to dig deeper.</description>
+    </item>
+    
+  </channel>
+</rss>

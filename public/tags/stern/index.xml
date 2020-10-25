@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>stern on Personal PasteBin</title>
+    <link>https://schoeffm.github.io/tags/stern/</link>
+    <description>Recent content in stern on Personal PasteBin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 07 May 2020 20:41:26 +0200</lastBuildDate><atom:link href="https://schoeffm.github.io/tags/stern/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JSON-Log Parsing With stern and jq</title>
+      <link>https://schoeffm.github.io/posts/json-log-parsing-with-stern-and-jq/</link>
+      <pubDate>Thu, 07 May 2020 20:41:26 +0200</pubDate>
+      
+      <guid>https://schoeffm.github.io/posts/json-log-parsing-with-stern-and-jq/</guid>
+      <description>&lt;p&gt;In many projects we use JSON as log format since it inheritly bears structure and thus is easy to process by log-aggregators (i.e. &lt;a href=&#34;https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html&#34;&gt;AWS CloudWatch&lt;/a&gt; autom. discovers fields from json just like &lt;a href=&#34;https://www.fluentd.org/centralized_application_logging&#34;&gt;fluentd&lt;/a&gt;).&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
